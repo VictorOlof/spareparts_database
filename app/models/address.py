@@ -9,7 +9,7 @@ class Address(Base):
     address_id = sa.Column(sa.Integer, primary_key=True)
     address = sa.Column(sa.String(100), nullable=False)
     city = sa.Column(sa.String(100), nullable=False)
-    postalCode = sa.Column(sa.Integer, nullable=False)
+    postal_code = sa.Column(sa.Integer, nullable=False)
     country = sa.Column(sa.String(100), nullable=False)
 
     customer = relationship("Customer", back_populates="address")
