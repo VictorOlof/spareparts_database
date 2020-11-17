@@ -7,12 +7,12 @@ def add_customer():
     first_name = input("Enter first name: ")
     last_name = input("Enter last name: ")
 
-    address = input('Enter street address: ')
+    address_name = input('Enter street address: ')
     city = input('Enter city: ')
     postal_code = int(input('Enter postal code: '))
     country = input('Enter country: ')
 
-    address = Address(address=address, city=city, postalCode=postal_code, country=country)
+    address = Address(address_name=address_name, city=city, postal_code=postal_code, country=country)
     session.add(address)
     session.commit()
 
