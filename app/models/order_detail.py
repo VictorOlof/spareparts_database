@@ -3,7 +3,7 @@ import sqlalchemy as sa
 from sqlalchemy.orm import relationship
 
 
-class orderDetails(Base):
+class OrderDetail(Base):
     __tablename__ = 'order_details'
 
     order_id = sa.Column(sa.Integer, sa.ForeignKey('orders.order_id'), primary_key=True, nullable=False)
