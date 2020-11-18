@@ -6,8 +6,8 @@ from sqlalchemy.orm import relationship
 class orderDetails(Base):
     __tablename__ = 'order_details'
 
-    order_id = sa.Column(sa.Integer, sa.ForeignKey('orders.order_id'), primary_key=True)
-    product_id = sa.Column(sa.Integer, sa.ForeignKey('products.product_id'), primary_key=True)
+    order_id = sa.Column(sa.Integer, sa.ForeignKey('orders.order_id'), primary_key=True, nullable=False)
+    product_id = sa.Column(sa.Integer, sa.ForeignKey('products.product_id'), primary_key=True, nullable=False)
     quantity_ordered = sa.Column(sa.Integer, nullable=False)
     sell_price_each = sa.Column(sa.Float(50), nullable=False)
     order_line_number = sa.Column(sa.Integer, nullable=False, unique=True)
