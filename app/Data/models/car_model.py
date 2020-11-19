@@ -1,5 +1,5 @@
 from sqlalchemy import UniqueConstraint
-from db import Base
+from Data.db import Base
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship
 

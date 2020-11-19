@@ -1,5 +1,6 @@
-from db import Base
+from Data.db import Base
 import sqlalchemy as sa
+
 
 class Order(Base):
     __tablename__ = 'orders'
