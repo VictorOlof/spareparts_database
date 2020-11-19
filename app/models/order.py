@@ -4,7 +4,7 @@ import sqlalchemy as sa
 class Order(Base):
     __tablename__ = 'orders'
 
-    order_id = sa.Column(sa.Integer, nullable=False, primary_key=True)
+    order_id = sa.Column(sa.Integer, primary_key=True)
     order_date = sa.Column(sa.Date, nullable=False)
     required_date = sa.Column(sa.Date, nullable=False)
     shipped_date = sa.Column(sa.Date, nullable=False)
