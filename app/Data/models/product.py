@@ -17,6 +17,6 @@ class Product(Base):
     product_manufacturer_id = sa.Column(sa.Integer, sa.ForeignKey('manufacturers.manufacturer_id'), nullable=False)
 
     def __repr__(self):
-        return f'Products: {self.product_id}, {self.product_name}, {self.description}, {self.quantity_in_stock},' \
+        return f'Product: {self.product_id}, {self.product_name}, {self.description}, {self.quantity_in_stock},' \
                f'{self.storage_space}, {self.buy_price}, {self.product_supplier_id}, {self.product_category_id}' \
                f'{self.product_manufacturer_id}'
