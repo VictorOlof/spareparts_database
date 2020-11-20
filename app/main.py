@@ -1,6 +1,16 @@
 from Data.db import Base, engine, session
 from Data.models.address import Address
+from Data.models.car_brand import CarBrand
+from Data.models.category import Category
 from Data.models.customer import Customer
+from Data.models.customers_has_carmodels import CustomerCar
+from Data.models.employee import Employee
+from Data.models.manufacturer import Manufacturer
+from Data.models.order import Order
+from Data.models.order_detail import OrderDetail
+from Data.models.product import Product
+from Data.models.store import Store
+from Data.models.supplier import Supplier
 from UI.main_menu import main_menu
 
 

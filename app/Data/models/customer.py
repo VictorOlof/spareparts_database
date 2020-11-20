@@ -11,7 +11,7 @@ class Customer(Base):
     last_name = sa.Column(sa.String(100), nullable=False)
     customer_address_id = sa.Column(sa.Integer, sa.ForeignKey('addresses.address_id'))
 
-    address = relationship("Address", back_populates="customer")
+    # address = relationship("Address", back_populates="customer")
     # customers_has_car_models = relationship("CustomerCar", back_populates="customers")
 
     def __repr__(self):
