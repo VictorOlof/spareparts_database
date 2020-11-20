@@ -10,7 +10,15 @@ def customers_menu():
 
         select = input("> ")
         if select == "1":
-            add_customer()
+            first_name = input("Enter first name: ")
+            last_name = input("Enter last name: ")
+            address_name = input('Enter street address: ')
+            city = input('Enter city: ')
+            postal_code = int(input('Enter postal code: '))
+            country = input('Enter country: ')
+
+            add_customer(first_name, last_name, address_name, city, postal_code, country)
+
         elif select == "2":
             customers = get_all_customers()
             for customer in customers:
