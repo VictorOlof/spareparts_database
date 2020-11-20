@@ -12,7 +12,7 @@ class Address(Base):
     postal_code = sa.Column(sa.Integer, nullable=False)
     country = sa.Column(sa.String(100), nullable=False)
 
-    customer = relationship("Customer", back_populates="address")
+    # customer = relationship("Customer", back_populates="address")
 
     def __repr__(self):
         return f'Address: {self.address_id}, {self.address_name}'
