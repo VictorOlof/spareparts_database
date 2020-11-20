@@ -10,7 +10,7 @@ class Product(Base):
     product_name = sa.Column(sa.String(50), nullable=False)
     description = sa.Column(sa.String(200))
     quantity_in_stock = sa.Column(sa.Integer, nullable=False)
-    storage_space = sa.Column(sa.String, nullable=False)
+    storage_space = sa.Column(sa.String(50), nullable=False)
     buy_price = sa.Column(sa.Float(50), nullable=False)
     product_supplier_id = sa.Column(sa.Integer, sa.ForeignKey('suppliers.supplier_id'), nullable=False)
     product_category_id = sa.Column(sa.Integer, sa.ForeignKey('categories.category_id'), nullable=False)
