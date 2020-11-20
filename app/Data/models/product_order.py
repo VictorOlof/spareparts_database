@@ -10,7 +10,7 @@ class ProductOrder(Base):
     quantity_limit = sa.Column(sa.Integer, nullable=False)
     order_amount = sa.Column(sa.Integer, nullable=False)
     order_incoming_date = sa.Column(sa.Date, nullable=False)
-    product_order_product_id = sa.Column(sa.Integer, sa.ForeignKey('products_product'),  nullable=False)
+    product_order_product_id = sa.Column(sa.Integer, sa.ForeignKey('products_product_id'),  nullable=False)
 
     def __repr__(self):
         return f'product_order: {self.product_order_id}, {self.quantity_limit}, {self.order_amount},' \
