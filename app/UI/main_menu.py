@@ -1,4 +1,5 @@
 from UI.customers_menu import customers_menu
+from UI.order_details_menu import order_details_menu
 
 
 def main_menu():
@@ -10,5 +11,10 @@ def main_menu():
         select = input("> ")
         if select == "1":
             customers_menu()
+
+
+
+        elif select == "3":
+            order_details_menu()
         else:
             break
