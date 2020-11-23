@@ -1,4 +1,5 @@
 from UI.customers_menu import customers_menu
+from UI.order_details_menu import order_details_menu
 from UI.orders_menu import orders_menu
 
 
