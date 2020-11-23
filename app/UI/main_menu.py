@@ -1,4 +1,5 @@
 from UI.customers_menu import customers_menu
+from UI.order_details_menu import order_details_menu
 from UI.orders_menu import orders_menu
 # from UI.carbrand_menu import car_brands_menu
 from UI.car_models_menu import car_models_menu

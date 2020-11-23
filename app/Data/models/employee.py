@@ -2,6 +2,7 @@ from Data.db import Base
 import sqlalchemy as sa
 from sqlalchemy.orm import relationship
 
+
 class Employee(Base):
     __tablename__ = 'employees'
 
