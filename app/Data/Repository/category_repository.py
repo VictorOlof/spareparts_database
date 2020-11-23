@@ -2,8 +2,8 @@ from Data.db import session
 from Data.models.category import Category
 
 
-def add_category(category_id, category_name, category_description):
-    category = Category(category_id=category_id, category_name=category_name, category_description=category_description)
+def add_category(category_name, category_description):
+    category = Category(category_name=category_name, category_description=category_description)
 
     session.add(category)
     session.commit()
