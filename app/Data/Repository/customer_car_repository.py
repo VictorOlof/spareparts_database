@@ -1,0 +1,13 @@
+from Data.models.customers_has_carmodels import CustomerCar
+from Data.db import session
+
+
+def add_customer_car(customer_id, car_model_id, reg_plate, color):
+    customer_car = CustomerCar(customer_id=customer_id, car_models_id=car_model_id,
+                               reg_plate=reg_plate, color=color)
+    session.add(customer_car)
+    session.commit()
+
+
+def get_all_customer_car():
+    return session.query(CustomerCar).all()
