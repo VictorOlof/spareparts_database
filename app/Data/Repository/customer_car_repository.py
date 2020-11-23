@@ -11,3 +11,7 @@ def add_customer_car(customer_id, car_model_id, reg_plate, color):
 
 def get_all_customer_car():
     return session.query(CustomerCar).all()
+
+
+def get_customer_car_by_id(customer_id):
+    return session.query(CustomerCar).filter(CustomerCar.customer_id == customer_id).all()
