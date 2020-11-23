@@ -1,8 +1,8 @@
 import Data.Repository.category_repository as ca
 
 
-def add_category(category_id, category_name, category_description):
-    ca.add_category(category_id, category_name, category_description)
+def add_category(category_name, category_description):
+    ca.add_category(category_name, category_description)
 
 
 def get_all_categories():

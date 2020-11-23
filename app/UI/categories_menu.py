@@ -11,11 +11,10 @@ def categories_menu():
 
         selection = input("> ")
         if selection == "1":
-            category_id = int(input('Category id: '))
             category_name = input('Category name: ')
             category_description = input('Category description: ')
 
-            add_category(category_id, category_name, category_description)
+            add_category(category_name, category_description)
 
         elif selection == "2":
             categories = get_all_categories()
