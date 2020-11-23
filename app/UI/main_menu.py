@@ -1,8 +1,6 @@
 from UI.customers_menu import customers_menu
-from UI.order_details_menu import order_details_menu
 from UI.orders_menu import orders_menu
-# from UI.carbrand_menu import car_brands_menu
-from UI.car_models_menu import car_models_menu
+from UI.customer_car_menu import customer_car_menu
 
 
 def main_menu():
@@ -11,8 +9,7 @@ def main_menu():
         print("----------")
         print("1. Customers")
         print("2. Orders")
-        print("3. Car brands")
-        print("4. Car Models menu")
+        print("3. Customer cars")
 
         select = input("> ")
         if select == "1":
@@ -20,9 +17,6 @@ def main_menu():
         elif select == "2":
             orders_menu()
         elif select == "3":
-            #  car_brands_menu()
-            pass
-        elif select == "4":
-            car_models_menu()
+            customer_car_menu()
         else:
             break
