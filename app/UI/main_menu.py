@@ -11,10 +11,4 @@ def main_menu():
         select = input("> ")
         if select == "1":
             customers_menu()
-
-
-
-        elif select == "3":
-            order_details_menu()
-        else:
             break
