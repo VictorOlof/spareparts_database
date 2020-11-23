@@ -13,3 +13,7 @@ class Order(Base):
     comment = sa.Column(sa.String(50))
     employee_id = sa.Column(sa.Integer, sa.ForeignKey('employees.employee_id'), nullable=False)
     customer_id = sa.Column(sa.Integer, sa.ForeignKey('customers.customer_id'), nullable=False)
+
+    def __repr__(self):
+        return f'Order: {self.order_id}, {self.order_date}, {self.required_date}, {self.shipped_date},' \
+               f' {self.status}, {self.comment}, {self.employee_id}, {self.customer_id}'
