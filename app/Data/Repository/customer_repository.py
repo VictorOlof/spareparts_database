@@ -23,4 +23,9 @@ def update_customer_address(obj, address, city, postal_code, country):
 
 
 def get_customer_by_id(customer_id):
-    return session.query(Customer).filter(Customer.customer_id == customer_id).first()
+    return session.query(Customer).get(customer_id)
+
+
+def remove_customer(obj):
+    session.delete(obj)
+    session.commit()

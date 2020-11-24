@@ -15,3 +15,7 @@ def update_customer_address(obj, address, city, postal_code, country):
 
 def get_customer_by_id(customer_id):
     return cr.get_customer_by_id(customer_id)
+
+
+def remove_customer(obj):
+    cr.remove_customer(obj)
