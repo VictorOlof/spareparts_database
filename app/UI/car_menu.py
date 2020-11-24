@@ -1,7 +1,7 @@
 from Controllers.customer_car_controller import add_customer_car, get_customer_car_by_id
 from Controllers.product_car_controller import add_product_car
 from Controllers.carbrands_controller import add_car_brand, get_all_car_brands
-from Controllers.car_model_controller import add_car_model, get_all_car_models
+from Controllers.car_model_controller import add_car_model
 
 
 def car_menu():
