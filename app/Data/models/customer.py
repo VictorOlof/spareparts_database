@@ -14,8 +14,8 @@ class Customer(Base):
     postal_code = sa.Column(sa.Integer, nullable=False)
     country = sa.Column(sa.String(100), nullable=False)
 
-    # customers_has_car_models = relationship("CustomerCar", back_populates="customers")
+    cars = relationship("CustomerCar", back_populates="customer")
 
     def __repr__(self):
-        return f'Customer: {self.customer_id}, {self.first_name}, {self.address}, {self.city}, {self.postal_code}, ' \
+        return f'Customer: {self.customer_id}, {self.first_name}, {self.last_name}, {self.address}, {self.city}, {self.postal_code}, ' \
                f'{self.country}'

@@ -11,8 +11,8 @@ class CustomerCar(Base):
     reg_plate = sa.Column(sa.String(6), primary_key=True, unique=True)
     color = sa.Column(sa.String(50), nullable=False)
 
-    # customers = relationship("Customer", back_populates="customers_has_car_models")
-    # car_models = relationship("CarModel", back_populates="customers_has_car_models")
+    customer = relationship("Customer", back_populates="cars")
+    car_model = relationship("CarModel", back_populates="customer_cars")
 
     def __repr__(self):
         return f'CustomerCar: {self.customer_id}, {self.car_models_id}, {self.reg_plate}, {self.color}'
