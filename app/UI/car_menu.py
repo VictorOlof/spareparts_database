@@ -53,11 +53,10 @@ def car_menu():
             car_brands = get_all_car_brands()
 
             for cb in car_brands:
-                print(cb.car_brand_name)
+                print(cb.car_brand_name.capitalize())
                 for model in cb.car_models:
                     print(f'  {model.car_model_name} | {model.car_model_year}')
 
         else:
             break
 
-car_menu()
