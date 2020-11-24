@@ -18,6 +18,8 @@ def update_customer_address(obj, address, city, postal_code, country):
     setattr(obj, 'city', city)
     setattr(obj, 'postal_code', postal_code)
     setattr(obj, 'country', country)
+    session.add(obj)
+    session.commit()
 
 
 def get_customer_by_id(customer_id):
