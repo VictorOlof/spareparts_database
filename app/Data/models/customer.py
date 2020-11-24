@@ -13,6 +13,8 @@ class Customer(Base):
     city = sa.Column(sa.String(100), nullable=False)
     postal_code = sa.Column(sa.Integer, nullable=False)
     country = sa.Column(sa.String(100), nullable=False)
+    company_name = sa.Column(sa.String(100), nullable=True)
+    org_number = sa.Column(sa.String(100), nullable=True)
 
     cars = relationship("CustomerCar", back_populates="customer")
 
