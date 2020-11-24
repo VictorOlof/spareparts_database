@@ -17,3 +17,5 @@ def get_customer_car_by_id(customer_id):
     return session.query(CustomerCar).filter(CustomerCar.customer_id == customer_id).all()
 
 
+def get_car_by_reg_plate(reg_plate):
+    return session.query(CustomerCar).filter(CustomerCar.reg_plate == reg_plate).first()
