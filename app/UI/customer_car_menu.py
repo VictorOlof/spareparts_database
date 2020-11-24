@@ -1,4 +1,4 @@
-from Controllers.customer_car_controller import add_customer_car, get_all_customer_car
+from Controllers.customer_car_controller import add_customer_car, get_customer_car_by_id, get_all_customer_car
 
 
 def customer_car_menu():
@@ -19,7 +19,10 @@ def customer_car_menu():
             add_customer_car(customer_id, car_model_id, reg_plate, color)
 
         elif selection == "2":
-            pass
+            customer_id = input("Enter customer id: ")
+            customer_cars = get_customer_car_by_id(customer_id)
+            for customer_car in customer_cars:
+                print(customer_car)
 
         elif selection == "3":
             customer_cars = get_all_customer_car()

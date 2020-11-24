@@ -7,3 +7,7 @@ def add_customer_car(customer_id, car_model_id, reg_plate, color):
 
 def get_all_customer_car():
     return ccr.get_all_customer_car()
+
+
+def get_customer_car_by_id(customer_id):
+    return ccr.get_customer_car_by_id(customer_id)
