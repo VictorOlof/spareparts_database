@@ -1,22 +1,24 @@
 from UI.customers_menu import customers_menu
 from UI.orders_menu import orders_menu
 from UI.car_menu import car_menu
+from UI.menu_functions import print_menu, get_user_menu_option
 
 
 def main_menu():
     while True:
         print("Main menu")
-        print("----------")
-        print("1. Customers")
-        print("2. Orders")
-        print("3. Cars menu")
+        print("---------")
 
-        select = input("> ")
-        if select == "1":
-            customers_menu()
-        elif select == "2":
-            orders_menu()
-        elif select == "3":
-            car_menu()
-        else:
-            break
+        options_main = {
+            "1": ("Customer menu", customers_menu),
+            "2": ("Order menu", orders_menu),
+            "3": ("Car menu", car_menu),
+            "4": ("Quit application", None)
+        }
+
+        print_menu(options_main)
+        option = get_user_menu_option(options_main)
+        try:
+            options_main[option][1]()
+        except TypeError:
+            break  # Leave menu if not able to call
