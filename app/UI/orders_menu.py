@@ -52,18 +52,13 @@ def orders_menu():
 
         elif selection == "6":
             orders = get_all_orders()
-            print('{:12}}{:12}')
+            print('{:20}{:20}{:20}{:20}{:20}{:20}{}'.format('Order date', 'Required date', 'Shipped date', 'Status',
+                                                            'Comment', 'Employee id', 'Customer id'))
             for order in orders:
-                print(order)
+                print('{}{:12}{}{:24}{:24}{:55}{}'.format(order.order_date, order.required_date,
+                                                          order.shipped_date, order.status, order.comment,
+                                                          order.employee_id, order.customer_id))
         elif selection == "7":
             break
 
 
-""" elif select == "7":  # View all car models
-            car_brands = get_all_car_brands()
-            print('{:12}{:12}{}'.format('Brand', 'Model', 'Year'))
-            for cb in car_brands:
-                for cm in cb.car_models:
-                    print('{:12}{:12}{}'.format(cb.car_brand_name.capitalize(),
-                                                cm.car_model_name,
-                                                cm.car_model_year))"""
