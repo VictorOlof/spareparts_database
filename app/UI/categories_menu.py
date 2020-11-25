@@ -1,4 +1,4 @@
-from Controllers.categories_controller import add_category, get_all_categories
+from Controllers.categories_controller import add_category, get_all_categories, get_products_by_category
 
 
 def categories_menu():
@@ -21,7 +21,8 @@ def categories_menu():
             for category in categories:
                 print(category)
         elif selection == "3":
-            category_selection = input("Select a category: ")
-            print(category_selection)
+            category = input("Select a category: ")
+            products = get_products_by_category(category)
+            print(products) # TODO fix print out
         elif selection == "4":
             break

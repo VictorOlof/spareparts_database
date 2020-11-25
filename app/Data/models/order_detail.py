@@ -11,7 +11,7 @@ class OrderDetail(Base):
     quantity_ordered = sa.Column(sa.Integer, nullable=False)
     sell_price_each = sa.Column(sa.Float(50), nullable=False)
 
-    # address = relationship("Address", back_populates="customer")
+    # address = relationship("Address", back_populates=2"customer")
 
     def __repr__(self):
         return f'Order details: {self.order_id}, {self.product_id}, {self.quantity_ordered}, {self.sell_price_each},'

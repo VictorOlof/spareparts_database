@@ -9,6 +9,6 @@ def get_all_categories():
     return ca.get_all_categories()
 
 
-def get_products_by_category():
-    return ca.get_products_by_category()
-    pass
+def get_products_by_category(category):
+    return ca.get_products_by_category(category)
+
