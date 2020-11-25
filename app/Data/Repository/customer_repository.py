@@ -11,3 +11,21 @@ def add_customer(first_name, last_name, address_name, city, postal_code, country
 
 def get_all_customers():
     return session.query(Customer).all()
+
+
+def update_customer_address(obj, address, city, postal_code, country):
+    setattr(obj, 'address', address)
+    setattr(obj, 'city', city)
+    setattr(obj, 'postal_code', postal_code)
+    setattr(obj, 'country', country)
+    session.add(obj)
+    session.commit()
+
+
+def get_customer_by_id(customer_id):
+    return session.query(Customer).get(customer_id)
+
+
+def remove_customer(obj):
+    session.delete(obj)
+    session.commit()
