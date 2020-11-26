@@ -58,10 +58,10 @@ def car_menu():
         elif select == "6":  # View owners for all cars
             customer_cars = get_all_customer_car()
             if customer_cars:
+                print('{:12}{:12}{:12}{:12}{:12}'.format('Reg. Plate', 'Model', 'Year', 'First name', 'Last name'))
                 for customer_car in customer_cars:
                     customer = get_customer_by_car(customer_car)
                     model = get_model_by_car(customer_car)
-                    print('{:12}{:12}{:12}{:12}{:12}'.format('Reg. Plate', 'Model', 'Year', 'First name', 'Last name'))
                     print('{:12}{:12}{:12}{:12}{:12}'.format(customer_car.reg_plate.upper(),
                                                              model.car_model_name.capitalize(),
                                                              str(model.car_model_year),
