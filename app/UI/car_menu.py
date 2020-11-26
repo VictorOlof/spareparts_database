@@ -5,6 +5,8 @@ from Controllers.car_model_controller import add_car_model, get_all_car_models_b
     get_all_car_models
 from Controllers.customers_controller import get_customer_by_car
 
+from UI.menu_functions import get_user_option_by_dict_keys
+
 
 def car_menu():
     while True:
@@ -83,11 +85,12 @@ def car_menu():
                 print("Could not find any car models")
 
         elif select == "8":  # View all car models for car brand
+            print("Select car brand")
             car_brands = get_all_car_brands()
             for key, car_brand in car_brands.items():
                 print(f'{key}. {car_brand.car_brand_name.capitalize()}')
 
-            select = int(input("Select car brand: "))
+            select = get_user_option_by_dict_keys(car_brands)
             selected_brand = car_brands[select]
 
             car_models = get_all_car_models_by_brand(selected_brand)
