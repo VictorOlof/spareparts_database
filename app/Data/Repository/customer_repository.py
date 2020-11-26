@@ -29,3 +29,7 @@ def get_customer_by_id(customer_id):
 def remove_customer(obj):
     session.delete(obj)
     session.commit()
+
+
+def get_customer_by_car(car_obj):
+    return car_obj.customer
