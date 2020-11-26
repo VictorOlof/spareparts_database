@@ -1,7 +1,7 @@
 from Controllers.customer_car_controller import add_customer_car, get_car_by_reg_plate
 from Controllers.product_car_controller import add_product_car
 from Controllers.carbrands_controller import add_car_brand, get_all_car_brands
-from Controllers.car_model_controller import add_car_model
+from Controllers.car_model_controller import add_car_model, get_all_car_models_by_brand
 from Controllers.customers_controller import get_all_customers
 
 
@@ -16,6 +16,7 @@ def car_menu():
         print("5. Search car owner by reg. plate")
         print("6. View owners for all cars")
         print("7. View all car models")
+        print("8. View all car models for car brand")
 
         select = input("> ")
 
@@ -41,6 +42,7 @@ def car_menu():
             car_model_car_brand_id = int(input('Enter brand id: '))
             add_car_model(car_model_name, car_model_year, car_model_car_brand_id)
 
+        # TODO: edit select 5-7
         elif select == "5":  # Search car owner by reg. plate
             reg_plate = input("Enter reg. plate: ")
             car = get_car_by_reg_plate(reg_plate)
@@ -69,12 +71,25 @@ def car_menu():
         elif select == "7":  # View all car models
             car_brands = get_all_car_brands()
             print('{:12}{:12}{}'.format('Brand', 'Model', 'Year'))
-            for cb in car_brands:
+            for key, cb in car_brands.items():
                 for cm in cb.car_models:
                     print('{:12}{:12}{}'.format(cb.car_brand_name.capitalize(),
                                                 cm.car_model_name,
                                                 cm.car_model_year))
 
+        elif select == "8":  # View all car models for car brand
+            car_brands = get_all_car_brands()
+            for key, car_brand in car_brands.items():
+                print(f'{key}. {car_brand.car_brand_name.capitalize()}')
+
+            select = int(input("Select car brand: "))
+            selected_brand = car_brands[select]
+
+            car_models = get_all_car_models_by_brand(selected_brand)
+            print('{:12}{:12}'.format('Model', 'Year'))
+            for car_model in car_models:
+                print('{:12}{}'.format(car_model.car_model_name.capitalize(),
+                                       car_model.car_model_year))
+
         else:
             break
-
