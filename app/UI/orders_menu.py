@@ -52,13 +52,11 @@ def orders_menu():
 
         elif selection == "6":
             orders = get_all_orders()
-            print('{:20}{:20}{:20}{:20}{:20}{:20}{}'.format('Order date', 'Required date', 'Shipped date', 'Status',
-                                                            'Comment', 'Employee id', 'Customer id'))
+            print('{:12}{:15}{:18}{:20}{:18}{:15}{:15}{}'.format('Order id', 'Order date', 'Required date',
+                                                                 'Shipped date', 'Status', 'Comment', 'Employee id',
+                                                                 'Customer id'))
             for order in orders:
-                print('{}{:12}{}{:24}{:24}{:55}{}'.format(order.order_date, order.required_date,
-                                                          order.shipped_date, order.status, order.comment,
-                                                          order.employee_id, order.customer_id))
+                print(order)
+
         elif selection == "7":
             break
-
-
