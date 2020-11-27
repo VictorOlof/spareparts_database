@@ -49,26 +49,27 @@ def car_menu():
             reg_plate = input("Enter reg. plate: ")
             customer_car = get_car_by_reg_plate(reg_plate)
             if customer_car:
-                customer = get_customer_by_car(customer_car)
-                print('{:12}{:12}{:12}'.format('Reg. Plate', 'First name', 'Last name'))
-                print('{:12}{:12}{:12}'.format(customer_car.reg_plate.upper(),
-                                               customer.first_name.capitalize(),
-                                               customer.last_name.capitalize()))
+                table_items = [
+                    {'Reg. Plate': customer_car.reg_plate.upper(),
+                     'First name': get_customer_by_car(customer_car).first_name.capitalize(),
+                     'Last name': get_customer_by_car(customer_car).last_name.capitalize()}
+                ]
+                print_table(table_items)
             else:
                 print(f"Could not found any owner with reg. plate: {reg_plate.upper()}")
 
         elif select == "6":  # View owners for all cars
             customer_cars = get_all_customer_car()
             if customer_cars:
-                print('{:12}{:12}{:12}{:12}{:12}'.format('Reg. Plate', 'Model', 'Year', 'First name', 'Last name'))
-                for customer_car in customer_cars:
-                    customer = get_customer_by_car(customer_car)
-                    model = get_model_by_car(customer_car)
-                    print('{:12}{:12}{:12}{:12}{:12}'.format(customer_car.reg_plate.upper(),
-                                                             model.car_model_name.capitalize(),
-                                                             str(model.car_model_year),
-                                                             customer.first_name.capitalize(),
-                                                             customer.last_name.capitalize()))
+                table_items = [
+                    {'Reg. Plate': customer_car.reg_plate.upper(),
+                     'Model': get_model_by_car(customer_car).car_model_name.capitalize(),
+                     'Year': str(get_model_by_car(customer_car).car_model_year),
+                     'First name': get_customer_by_car(customer_car).first_name.capitalize(),
+                     'Last name': get_customer_by_car(customer_car).last_name.capitalize()}
+                    for customer_car in customer_cars
+                ]
+                print_table(table_items)
             else:
                 print("Could not find any cars.")
 
