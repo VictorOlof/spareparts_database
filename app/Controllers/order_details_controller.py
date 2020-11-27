@@ -1,9 +1,9 @@
 import Data.Repository.order_detail_repository as odd
 
 
-def add_order_detail(order_id, product_id, quantity_ordered, sell_price_each, order_line_number):
-    odd.add_order_detail(order_id, product_id, quantity_ordered, sell_price_each, order_line_number)
+def add_order_detail(order_id, product_id, quantity_ordered, sell_price_each):
+    odd.add_order_detail(order_id, product_id, quantity_ordered, sell_price_each)
 
 
-def get_all_order_details():
-    return odd.get_all_order_details()
+def get_all_order_details(order_id):
+    return odd.get_all_order_details(order_id)
