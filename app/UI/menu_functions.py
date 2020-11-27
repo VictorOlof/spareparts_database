@@ -27,3 +27,9 @@ def print_table(table: list):
             value = dic[key]
             print('{:15}'.format(value), end="")
         print()
+
+
+def print_all_key_value_in_dict(dictionary: dict):
+    """Prints key and value of dict in format (KEY. VALUE)"""
+    for key, value in dictionary.items():
+        print(f'{key}. {value}')
