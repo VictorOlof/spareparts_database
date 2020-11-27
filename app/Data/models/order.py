@@ -15,19 +15,24 @@ class Order(Base):
     customer_id = sa.Column(sa.Integer, sa.ForeignKey('customers.customer_id'), nullable=False)
 
     def __repr__(self):
-        return f'{self.order_id}'.ljust(12) + f'{self.order_date}'.ljust(15) + f'{self.required_date}'.ljust(18) + \
-               f'{self.shipped_date}'.ljust(20) + f'{self.status}'.ljust(18) + f'{self.comment}'.ljust(15) + \
-               f'{self.employee_id}'.ljust(15) + f'{self.customer_id}'.ljust(15)
+        return '{:12}{:15}{:18}{:20}{:18}{:15}{:15}{}'.format(str(self.order_id), str(self.order_date),
+                                                              str(self.required_date), str(self.shipped_date),
+                                                              str(self.status),  str(self.comment),
+                                                              str(self.employee_id), str(self.customer_id))
 
 
 
 
 
+""" return '{:12}{:15}{:18}{:20}{:18}{:15}{:15}{}'.format(str(self.order_id), str(self.order_date),
+                                                              str(self.required_date), str(self.shipped_date), 
+                                                              str(self.status),  str(self.comment),
+                                                              str(self.employee_id), str(self.customer_id))"""
 
-"""return f'{self.order_id}'.ljust(12) + f'{self.order_date}'.ljust(15) + f'{self.required_date}'.ljust(18) +\
+
+"""return f'{self.order_id}'.ljust(12) + f'{self.order_date}'.ljust(15) + f'{self.required_date}'.ljust(18) + \
                f'{self.shipped_date}'.ljust(20) + f'{self.status}'.ljust(18) + f'{self.comment}'.ljust(15) + \
                f'{self.employee_id}'.ljust(15) + f'{self.customer_id}'.ljust(15)"""
-
 
 """return f'   {self.order_id}        {self.order_date}     {self.required_date}     ' \
                                f'{self.shipped_date}     {self.status}        {self.comment}            ' \
