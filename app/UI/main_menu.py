@@ -1,6 +1,7 @@
 from UI.customers_menu import customers_menu
 from UI.orders_menu import orders_menu
 from UI.car_menu import car_menu
+from UI.product_menu import product_menu
 from UI.menu_functions import print_menu, get_user_menu_option
 
 
@@ -13,7 +14,8 @@ def main_menu():
             "1": ("Customer menu", customers_menu),
             "2": ("Order menu", orders_menu),
             "3": ("Car menu", car_menu),
-            "4": ("Quit application", None)
+            "4": ("Product menu", product_menu),
+            "5": ("Quit application", None)
         }
 
         print_menu(options_main)
