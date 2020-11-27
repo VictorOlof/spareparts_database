@@ -1,5 +1,6 @@
 from Controllers.order_details_controller import get_all_order_details
-from Controllers.orders_controller import create_order, get_all_orders, create_employee, create_store, add_item_to_order
+from Controllers.orders_controller import create_order, get_all_orders, create_employee, create_store, \
+    add_item_to_order, list_all_stores
 
 
 def orders_menu():
@@ -14,7 +15,7 @@ def orders_menu():
         print("6. View All Orders")
         print("7. Quit Orders Menu")
 
-        selection = input(" >")
+        selection = input("> ")
         if selection == "1":
             order_date = input('Order date: ')
             required_date = input('Required date: ')
@@ -28,6 +29,15 @@ def orders_menu():
 
         elif selection == "2":
             employee_name = input('Employee name: ')
+            list_stores = input('Select store (Press "l" to show all stores): ')
+            while list_stores != "l":
+                list_stores = input('Press "l" to show all stores: ')
+            else:
+                stores = list_all_stores()
+                print('{:15}{}'.format(str('Store id'), str('Store name')))
+                for store in stores:
+                    print(store)
+
             employee_store_id = int(input('Store id: '))
 
             create_employee(employee_name, employee_store_id)
@@ -48,17 +58,16 @@ def orders_menu():
         elif selection == "5":
             order_id = int(input("Order id: "))
             order_details = get_all_order_details(order_id)
+            print('{:12}{:15}{:15}{}'.format('Order id', 'Product id', 'Quantity', 'Price each'))
             print(order_details)
 
         elif selection == "6":
             orders = get_all_orders()
-            print('{:20}{:20}{:20}{:20}{:20}{:20}{}'.format('Order date', 'Required date', 'Shipped date', 'Status',
-                                                            'Comment', 'Employee id', 'Customer id'))
+            print('{:12}{:15}{:18}{:20}{:18}{:15}{:15}{}'.format('Order id', 'Order date', 'Required date',
+                                                                 'Shipped date', 'Status', 'Comment', 'Employee id',
+                                                                 'Customer id'))
             for order in orders:
-                print('{}{:12}{}{:24}{:24}{:55}{}'.format(order.order_date, order.required_date,
-                                                          order.shipped_date, order.status, order.comment,
-                                                          order.employee_id, order.customer_id))
+                print(order)
+
         elif selection == "7":
             break
-
-

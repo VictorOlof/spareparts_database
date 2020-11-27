@@ -1,8 +1,8 @@
 import Data.Repository.customer_repository as cr
 
 
-def add_customer(first_name, last_name, address_name, city, postal_code, country):
-    cr.add_customer(first_name, last_name, address_name, city, postal_code, country)
+def add_customer(first_name, last_name, address_name, city, postal_code, country, company_name, org_number):
+    cr.add_customer(first_name, last_name, address_name, city, postal_code, country, company_name, org_number)
 
 
 def get_all_customers():
@@ -19,3 +19,7 @@ def get_customer_by_id(customer_id):
 
 def remove_customer(obj):
     cr.remove_customer(obj)
+
+
+def get_customer_by_car(car_obj):
+    return cr.get_customer_by_car(car_obj)

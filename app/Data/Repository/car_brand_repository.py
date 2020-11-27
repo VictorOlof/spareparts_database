@@ -10,3 +10,7 @@ def add_car_brand(car_brand_name):
 
 def get_all_car_brands():
     return session.query(CarBrand).all()
+
+
+def get_brand_by_model(car_model_obj):
+    return car_model_obj.car_brand
