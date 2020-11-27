@@ -1,5 +1,6 @@
 from Controllers.customers_controller import add_customer, get_all_customers, \
     get_customer_by_id, update_customer_address, remove_customer
+from UI.menu_functions import print_table
 
 
 def customers_menu():
@@ -23,8 +24,19 @@ def customers_menu():
 
         elif select == "2":
             customers = get_all_customers()
-            for customer in customers:
-                print(customer)
+            if customers:
+                table_items = [
+                    {'First name': customer.first_name,
+                     'Last name': customer.last_name,
+                     'Address': customer.address,
+                     'City': customer.city,
+                     'Postal code': str(customer.postal_code),
+                     'Country': customer.country,
+                     'Company': customer.company_name,
+                     'Org. Number': customer.org_number}
+                    for customer in customers
+                ]
+                print_table(table_items)
 
         elif select == "3":  # Update address for customer
             customer_id = input("Enter customer id: ")
