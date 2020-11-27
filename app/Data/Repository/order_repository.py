@@ -27,6 +27,9 @@ def create_store(store_name):
     session.commit()
 
 
+def list_all_stores():
+    return session.query(Store).all()
+
 def add_item_to_order(order_id, product_id, quantity_ordered, sell_price_each):
     added_item = OrderDetail(order_id=order_id, product_id=product_id,
                              quantity_ordered=quantity_ordered, sell_price_each=sell_price_each)
@@ -35,7 +38,9 @@ def add_item_to_order(order_id, product_id, quantity_ordered, sell_price_each):
     session.commit()
 
 
+def get_all_order_details(order_id):
+    return session.query(OrderDetail).filter(OrderDetail.order_id == order_id).first()
+
+
 def get_all_orders():
     return session.query(Order).all()
-
-

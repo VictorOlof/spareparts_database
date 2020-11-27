@@ -14,4 +14,5 @@ class OrderDetail(Base):
     # address = relationship("Address", back_populates=2"customer")
 
     def __repr__(self):
-        return f'Order details: {self.order_id}, {self.product_id}, {self.quantity_ordered}, {self.sell_price_each},'
+        return '{:12}{:15}{:15}{}'.format(str(self.order_id), str(self.product_id),
+                                          str(self.quantity_ordered), str(self.sell_price_each))

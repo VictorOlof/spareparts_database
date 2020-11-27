@@ -15,9 +15,8 @@ def order_details_menu():
             product_id = int(input('Product name: '))
             quantity_ordered = int(input('Quantity ordered: '))
             sell_price_each = float(input('Sell price each: '))
-            order_line_number = int(input('Order line number: '))
 
-            add_order_detail(order_id, product_id, quantity_ordered, sell_price_each, order_line_number)
+            add_order_detail(order_id, product_id, quantity_ordered, sell_price_each)
 
         elif selection == "2":
             order_details = get_all_order_details()

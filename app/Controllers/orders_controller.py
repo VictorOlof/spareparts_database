@@ -13,6 +13,10 @@ def create_store(store_name):
     od.create_store(store_name)
 
 
+def list_all_stores():
+    return od.list_all_stores()
+
+
 def add_item_to_order(order_id, product_id, quantity_ordered, sell_price_each):
     od.add_item_to_order(order_id, product_id, quantity_ordered, sell_price_each)
 

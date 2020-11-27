@@ -10,4 +10,5 @@ class Store(Base):
     store_name = sa.Column(sa.String(50), nullable=False)
 
     def __repr__(self):
-        return f'Store: {self.store_id}, {self.store_name}'
+        return '{:15}{}'.format(str(self.store_id), str(self.store_name))
+
