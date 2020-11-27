@@ -1,6 +1,9 @@
 from Controllers.order_details_controller import get_all_order_details
 from Controllers.orders_controller import create_order, get_all_orders, create_employee, create_store, \
     add_item_to_order, list_all_stores
+from Data.models.order import Order
+
+from UI.menu_functions import get_user_option_by_dict_keys, print_table
 
 
 def orders_menu():
@@ -39,12 +42,10 @@ def orders_menu():
                     print(store)
 
             employee_store_id = int(input('Store id: '))
-
             create_employee(employee_name, employee_store_id)
 
         elif selection == "3":
             store_name = input('Store name: ')
-
             create_store(store_name)
 
         elif selection == "4":
@@ -58,8 +59,20 @@ def orders_menu():
         elif selection == "5":
             order_id = int(input("Order id: "))
             order_details = get_all_order_details(order_id)
-            print('{:12}{:15}{:15}{}'.format('Order id', 'Product id', 'Quantity', 'Price each'))
-            print(order_details)
+            if order_details:
+                table_items = [
+                    {'Order id': str(Order.order_id),
+                     'Order date': str(Order.order_date),
+                     'Required date': str(Order.required_date),
+                     'Shipped date': str(Order.shipped_date),
+                     'Status': Order.status,
+                     'Comment': Order.comment,
+                     'Employee id': Order.employee_id,
+                     'Customer id:': Order.customer_id}
+                ]
+                print_table(table_items)
+            else:
+                print(f"Could not find any order with order id: {order_id}")
 
         elif selection == "6":
             orders = get_all_orders()

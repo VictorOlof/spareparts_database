@@ -15,7 +15,5 @@ class Order(Base):
     customer_id = sa.Column(sa.Integer, sa.ForeignKey('customers.customer_id'), nullable=False)
 
     def __repr__(self):
-        return '{:12}{:15}{:18}{:20}{:18}{:15}{:15}{}'.format(str(self.order_id), str(self.order_date),
-                                                              str(self.required_date), str(self.shipped_date),
-                                                              str(self.status),  str(self.comment),
-                                                              str(self.employee_id), str(self.customer_id))
+        return f'Order: {self.order_id}, {self.order_date}, {self.required_date}, {self.shipped_date}, {self.status},' \
+               f'{self.comment}, {self.employee_id}, {self.customer_id}'
