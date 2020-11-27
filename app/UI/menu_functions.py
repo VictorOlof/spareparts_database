@@ -13,3 +13,17 @@ def get_user_option_by_dict_keys(menu_options: dict):
                 return value
         except ValueError:
             print("Invalid option.")
+
+
+def print_table(table: list):
+    """Takes a list of dictionaries and print out values of dict in a table format"""
+    # print table head row
+    for key in table[0].keys():
+        print('{:15}'.format(key), end="")
+    print()
+    # print rows
+    for dic in table:
+        for key in dic:
+            value = dic[key]
+            print('{:15}'.format(value), end="")
+        print()

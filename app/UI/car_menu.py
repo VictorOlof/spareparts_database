@@ -5,7 +5,7 @@ from Controllers.car_model_controller import add_car_model, get_all_car_models_b
     get_all_car_models
 from Controllers.customers_controller import get_customer_by_car
 
-from UI.menu_functions import get_user_option_by_dict_keys
+from UI.menu_functions import get_user_option_by_dict_keys, print_table
 
 
 def car_menu():
@@ -75,12 +75,13 @@ def car_menu():
         elif select == "7":  # View all car models
             car_models = get_all_car_models()
             if car_models:
-                print('{:12}{:12}{}'.format('Brand', 'Model', 'Year'))
-                for car_model in car_models:
-                    car_brand = get_brand_by_model(car_model)
-                    print('{:12}{:12}{}'.format(car_brand.car_brand_name.capitalize(),
-                                                car_model.car_model_name,
-                                                car_model.car_model_year))
+                table_items = [
+                    {'Brand': get_brand_by_model(car_model).car_brand_name.capitalize(),
+                     'Model': car_model.car_model_name,
+                     'Year': str(car_model.car_model_year)}
+                    for car_model in car_models
+                ]
+                print_table(table_items)
             else:
                 print("Could not find any car models")
 
@@ -94,10 +95,15 @@ def car_menu():
             selected_brand = car_brands[select]
 
             car_models = get_all_car_models_by_brand(selected_brand)
-            print('{:12}{:12}'.format('Model', 'Year'))
-            for car_model in car_models:
-                print('{:12}{}'.format(car_model.car_model_name.capitalize(),
-                                       car_model.car_model_year))
+            if car_models:
+                table_items = [
+                    {'Model': car_model.car_model_name,
+                     'Year': str(car_model.car_model_year)}
+                    for car_model in car_models
+                ]
+                print_table(table_items)
+            else:
+                print(f"Could not find any models for {selected_brand.car_brand_name.capitalize()} brand.")
 
         else:
             break
