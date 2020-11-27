@@ -15,7 +15,7 @@ def orders_menu():
         print("6. View All Orders")
         print("7. Quit Orders Menu")
 
-        selection = input(" >")
+        selection = input("> ")
         if selection == "1":
             order_date = input('Order date: ')
             required_date = input('Required date: ')
