@@ -2,7 +2,7 @@ from UI.categories_menu import categories_menu
 from UI.customers_menu import customers_menu
 from UI.orders_menu import orders_menu
 from UI.car_menu import car_menu
-from UI.menu_functions import print_menu, get_user_menu_option
+from UI.menu_functions import print_menu, get_user_option_by_dict_keys
 
 
 def main_menu():
@@ -18,7 +18,7 @@ def main_menu():
         }
 
         print_menu(options_main)
-        option = get_user_menu_option(options_main)
+        option = get_user_option_by_dict_keys(options_main)
         try:
             options_main[option][1]()
         except TypeError:
