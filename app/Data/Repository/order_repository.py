@@ -30,6 +30,7 @@ def create_store(store_name):
 def list_all_stores():
     return session.query(Store).all()
 
+
 def add_item_to_order(order_id, product_id, quantity_ordered, sell_price_each):
     added_item = OrderDetail(order_id=order_id, product_id=product_id,
                              quantity_ordered=quantity_ordered, sell_price_each=sell_price_each)

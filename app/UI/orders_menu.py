@@ -1,6 +1,6 @@
-from Controllers.order_details_controller import get_all_order_details
 from Controllers.orders_controller import create_order, get_all_orders, create_employee, create_store, \
     add_item_to_order, list_all_stores
+from Data.Repository.order_repository import get_all_order_details
 from Data.models.order import Order
 
 from UI.menu_functions import get_user_option_by_dict_keys, print_table
@@ -61,14 +61,10 @@ def orders_menu():
             order_details = get_all_order_details(order_id)
             if order_details:
                 table_items = [
-                    {'Order id': str(Order.order_id),
-                     'Order date': str(Order.order_date),
-                     'Required date': str(Order.required_date),
-                     'Shipped date': str(Order.shipped_date),
-                     'Status': Order.status,
-                     'Comment': Order.comment,
-                     'Employee id': Order.employee_id,
-                     'Customer id:': Order.customer_id}
+                    {'Order id': str(order_details.order_id),
+                     'Product id': str(get_all_order_details(order_id).product_id),
+                     'Quantity ordered': str(get_all_order_details(order_id).quantity_ordered),
+                     'Sell price each': str(get_all_order_details(order_id).sell_price_each)}
                 ]
                 print_table(table_items)
             else:
@@ -76,11 +72,20 @@ def orders_menu():
 
         elif selection == "6":
             orders = get_all_orders()
-            print('{:12}{:15}{:18}{:20}{:18}{:15}{:15}{}'.format('Order id', 'Order date', 'Required date',
-                                                                 'Shipped date', 'Status', 'Comment', 'Employee id',
-                                                                 'Customer id'))
-            for order in orders:
-                print(order)
+            if orders:
+                table_items = [
+                    {'Order id': str(order.order_id),
+                     'Order date': str(order.order_date),
+                     'Shipped date': str(order.shipped_date),
+                     'Status': str(order.status),
+                     'Comment': str(order.comment),
+                     'Employee id': str(order.employee_id),
+                     'Customer id': str(order.customer_id)}
+                    for order in orders
+                ]
+                print_table(table_items)
+            else:
+                print(f"Could not find any orders")
 
         elif selection == "7":
             break
