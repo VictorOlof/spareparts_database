@@ -1,9 +1,9 @@
-from Controllers.customer_car_controller import add_customer_car, get_all_customer_car, get_car_by_reg_plate
+from Controllers.customer_car_controller import add_customer_car, get_all_customer_car, get_car_by_reg_plate, \
+    get_customer_by_customer_car
 from Controllers.product_car_controller import add_product_car
 from Controllers.carbrands_controller import add_car_brand, get_all_car_brands, get_brand_by_model
 from Controllers.car_model_controller import add_car_model, get_all_car_models_by_brand, get_model_by_car, \
     get_all_car_models
-from Controllers.customers_controller import get_customer_by_car
 
 from UI.menu_functions import get_user_option_by_dict_keys, print_table, print_all_key_value_in_dict
 
@@ -51,8 +51,8 @@ def car_menu():
             if customer_car:
                 table_items = [
                     {'Reg. Plate': customer_car.reg_plate.upper(),
-                     'First name': get_customer_by_car(customer_car).first_name.capitalize(),
-                     'Last name': get_customer_by_car(customer_car).last_name.capitalize()}
+                     'First name': get_customer_by_customer_car(customer_car).first_name.capitalize(),
+                     'Last name': get_customer_by_customer_car(customer_car).last_name.capitalize()}
                 ]
                 print_table(table_items)
             else:
@@ -65,8 +65,8 @@ def car_menu():
                     {'Reg. Plate': customer_car.reg_plate.upper(),
                      'Model': get_model_by_car(customer_car).car_model_name.capitalize(),
                      'Year': str(get_model_by_car(customer_car).car_model_year),
-                     'First name': get_customer_by_car(customer_car).first_name.capitalize(),
-                     'Last name': get_customer_by_car(customer_car).last_name.capitalize()}
+                     'First name': get_customer_by_customer_car(customer_car).first_name.capitalize(),
+                     'Last name': get_customer_by_customer_car(customer_car).last_name.capitalize()}
                     for customer_car in customer_cars
                 ]
                 print_table(table_items)
