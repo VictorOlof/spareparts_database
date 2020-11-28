@@ -1,5 +1,6 @@
 from Data.models.customer import Customer
 from Data.db import session
+from Data.Repository import repo_functions as rf
 
 
 def add_customer(first_name, last_name, address_name, city, postal_code, country, company_name, org_number):
@@ -11,25 +12,23 @@ def add_customer(first_name, last_name, address_name, city, postal_code, country
 
 
 def get_all_customers():
-    return session.query(Customer).all()
-
-
-def update_customer_address(obj, address, city, postal_code, country):
-    setattr(obj, 'address', address)
-    setattr(obj, 'city', city)
-    setattr(obj, 'postal_code', postal_code)
-    setattr(obj, 'country', country)
-    session.add(obj)
-    session.commit()
+    return rf.get_all_models(Customer)
 
 
 def get_customer_by_id(customer_id):
-    return session.query(Customer).get(customer_id)
+    return rf.get_model_by_id(Customer, 'customer_id', customer_id)
 
 
-def remove_customer(obj):
-    session.delete(obj)
-    session.commit()
+def get_customers_by_column_value(column_value, value):
+    return rf.get_models_by_column_value(Customer, column_value, value)
+
+
+def update_customer_by_column(customer_obj, column_value, value):
+    rf.update_object_by_column(customer_obj, column_value, value)
+
+
+def remove_customer(customer_obj):
+    rf.remove_object(customer_obj)
 
 
 def get_customer_by_car(car_obj):

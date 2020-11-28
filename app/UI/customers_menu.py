@@ -1,5 +1,5 @@
 from Controllers.customers_controller import add_customer, get_all_customers, \
-    get_customer_by_id, update_customer_address, remove_customer
+    get_customer_by_id, remove_customer, get_customers_by_column_value, update_customer_by_column
 from UI.menu_functions import print_table
 
 
@@ -39,15 +39,18 @@ def customers_menu():
                     for customer in customers
                 ]
                 print_table(table_items)
+            else:
+                print("Could not find any customers.")
 
         elif select == "3":  # Update address for customer
             customer_id = input("Enter customer id: ")
             customer = get_customer_by_id(customer_id)
-            address = input('Enter street address: ')
-            city = input('Enter city: ')
-            postal_code = input('Enter postal code: ')
-            country = input('Enter country: ')
-            update_customer_address(customer, address, city, postal_code, country)
+            get_customers_by_column_value('customer_id', customer_id)
+
+            update_columns = ['address', 'city', 'postal_code', 'country']
+            for column in update_columns:
+                value = input(f"Enter new {column}: ")
+                update_customer_by_column(customer, column, value)
 
         elif select == "4":  # 4. Remove customer
             customer_id = input("Enter customer id: ")
