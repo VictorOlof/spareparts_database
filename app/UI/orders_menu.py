@@ -1,6 +1,9 @@
-from Controllers.order_details_controller import get_all_order_details
 from Controllers.orders_controller import create_order, get_all_orders, create_employee, create_store, \
     add_item_to_order, list_all_stores
+from Data.Repository.order_repository import get_all_order_details
+from Data.models.order import Order
+
+from UI.menu_functions import get_user_option_by_dict_keys, print_table
 
 
 def orders_menu():
@@ -39,12 +42,10 @@ def orders_menu():
                     print(store)
 
             employee_store_id = int(input('Store id: '))
-
             create_employee(employee_name, employee_store_id)
 
         elif selection == "3":
             store_name = input('Store name: ')
-
             create_store(store_name)
 
         elif selection == "4":
@@ -58,16 +59,33 @@ def orders_menu():
         elif selection == "5":
             order_id = int(input("Order id: "))
             order_details = get_all_order_details(order_id)
-            print('{:12}{:15}{:15}{}'.format('Order id', 'Product id', 'Quantity', 'Price each'))
-            print(order_details)
+            if order_details:
+                table_items = [
+                    {'Order id': str(order_details.order_id),
+                     'Product id': str(get_all_order_details(order_id).product_id),
+                     'Quantity ordered': str(get_all_order_details(order_id).quantity_ordered),
+                     'Sell price each': str(get_all_order_details(order_id).sell_price_each)}
+                ]
+                print_table(table_items)
+            else:
+                print(f"Could not find any order with order id: {order_id}")
 
         elif selection == "6":
             orders = get_all_orders()
-            print('{:12}{:15}{:18}{:20}{:18}{:15}{:15}{}'.format('Order id', 'Order date', 'Required date',
-                                                                 'Shipped date', 'Status', 'Comment', 'Employee id',
-                                                                 'Customer id'))
-            for order in orders:
-                print(order)
+            if orders:
+                table_items = [
+                    {'Order id': str(order.order_id),
+                     'Order date': str(order.order_date),
+                     'Shipped date': str(order.shipped_date),
+                     'Status': str(order.status),
+                     'Comment': str(order.comment),
+                     'Employee id': str(order.employee_id),
+                     'Customer id': str(order.customer_id)}
+                    for order in orders
+                ]
+                print_table(table_items)
+            else:
+                print(f"Could not find any orders")
 
         elif selection == "7":
             break
