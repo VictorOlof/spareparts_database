@@ -13,7 +13,7 @@ class Supplier(Base):
     supplier_email = sa.Column(sa.String(50), nullable=False)
     contact_name = sa.Column(sa.String(50))
 
-    # address = relationship("Address", back_populates="customer")
+    products = relationship("Product", back_populates="supplier")
 
     def __repr__(self):
         return f'Supplier: {self.supplier_id}, {self.supplier_name}, {self.supplier_address}, {self.supplier_phone},' \

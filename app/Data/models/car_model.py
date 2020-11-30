@@ -18,6 +18,7 @@ class CarModel(Base):
 
     car_brand = relationship("CarBrand", back_populates="car_models")
     customer_cars = relationship("CustomerCar", back_populates="car_model")
+    product_cars = relationship("ProductCar", back_populates="car_model")
 
     def __repr__(self):
         return f'Car model: {self.car_model_id}, {self.car_model_name}, {self.car_model_year}, ' \

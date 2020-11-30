@@ -14,7 +14,7 @@ class Manufacturer(Base):
     contact_phone = sa.Column(sa.String(50))
     contact_email = sa.Column(sa.String(50))
 
-    # address = relationship("Address", back_populates="customer")
+    products = relationship("Product", back_populates="manufacturer")
 
     def __repr__(self):
         return f'Manufacturer: {self.manufacturer_id}, {self.manufacturer_name}, {self.hq_address}, {self.hq_phone},' \
