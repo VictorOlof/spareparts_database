@@ -10,7 +10,7 @@ class Category(Base):
     category_name = sa.Column(sa.String(50), nullable=False)
     category_description = sa.Column(sa.String(50), nullable=False)
 
-    # address = relationship("Address", back_populates="customer")
+    products = relationship("Product", back_populates="category")
 
     def __repr__(self):
         return f'Category: {self.category_id}, {self.category_name}, {self.category_description}'
