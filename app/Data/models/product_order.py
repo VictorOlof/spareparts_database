@@ -12,6 +12,8 @@ class ProductOrder(Base):
     order_incoming_date = sa.Column(sa.Date, nullable=False)
     product_order_product_id = sa.Column(sa.Integer, sa.ForeignKey('products_product_id'),  nullable=False)
 
+    # product = relationship("Product", back_populates="product_order")
+
     def __repr__(self):
         return f'product_order: {self.product_order_id}, {self.quantity_limit}, {self.order_amount},' \
                f'{self.order_incoming_date}, {self.product_order_product_id}'
