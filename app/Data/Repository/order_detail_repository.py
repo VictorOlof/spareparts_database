@@ -12,3 +12,4 @@ def add_order_detail(order_id, product_id, quantity_ordered, sell_price_each):
 def get_all_order_details(order_id):
     return session.query(OrderDetail).filter(OrderDetail.order_id == order_id).first()
 
+

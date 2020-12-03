@@ -1,8 +1,7 @@
-from UI.categories_menu import categories_menu
 from UI.customers_menu import customers_menu
 from UI.orders_menu import orders_menu
 from UI.car_menu import car_menu
-from UI.product_menu import product_menu
+from UI.products_menu import product_menu
 from UI.menu_functions import print_menu, get_user_option_by_dict_keys
 
 

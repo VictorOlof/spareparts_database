@@ -20,5 +20,5 @@ class Customer(Base):
     orders = relationship("Order", back_populates="customer", cascade="all, delete")
 
     def __repr__(self):
-        return f'Customer: {self.customer_id}, {self.first_name}, {self.last_name}, {self.address}, {self.city}, {self.postal_code}, ' \
-               f'{self.country}'
+        return f'Customer: {self.customer_id}, {self.first_name}, {self.last_name}, {self.address}, {self.city}, ' \
+               f'{self.postal_code}, {self.country}'
