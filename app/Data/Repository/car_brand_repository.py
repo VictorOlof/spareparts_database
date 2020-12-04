@@ -4,9 +4,7 @@ from Data.Repository import repo_functions as rf
 
 
 def add_car_brand(car_brand_name):
-    car_brand = CarBrand(car_brand_name=car_brand_name)
-    session.add(car_brand)
-    session.commit()
+    rf.add_model(CarBrand, car_brand_name=car_brand_name)
 
 
 def get_all_car_brands():
@@ -15,3 +13,10 @@ def get_all_car_brands():
 
 def get_brand_by_model(car_model_obj):
     return car_model_obj.car_brand
+
+# add_car_brand('bmw')
+def bar(**kwargs):
+    for a in kwargs:
+        print(a, kwargs[a])
+
+bar(name='one', age=27)
