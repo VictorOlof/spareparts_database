@@ -1,12 +1,13 @@
 import Data.Repository.customer_repository as cr
+import Data.pymongo_repository.customer_repository as p_cr
 
 
 def add_customer(first_name, last_name, address_name, city, postal_code, country, company_name, org_number):
-    cr.add_customer(first_name, last_name, address_name, city, postal_code, country, company_name, org_number)
+    p_cr.add_customer(first_name, last_name, address_name, city, postal_code, country, company_name, org_number)
 
 
 def get_all_customers():
-    return cr.get_all_customers()
+    return p_cr.get_all_customers()
 
 
 def update_customer_by_column(customer_obj, column_value, value):
