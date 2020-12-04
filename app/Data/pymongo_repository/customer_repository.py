@@ -1,5 +1,5 @@
-# from Data.pymongo_models import Customer
 import Data.pymongo_models as mm
+from Data.pymongo_repository import repo_functions as rf
 
 
 def add_customer(first_name, last_name, address_name, city, postal_code, country, company_name, org_number):
@@ -10,12 +10,11 @@ def add_customer(first_name, last_name, address_name, city, postal_code, country
 
 
 def get_all_customers():
-    print(mm.Customer.all())
-    return mm.Customer.all()
+    return rf.get_all_models(mm.Customer)
 
 
 def get_customer_by_id(customer_id):
-    pass
+    return rf.get_model_by_id(mm.Customer, customer_id)
 
 
 def get_customers_by_column_value(column_value, value):
