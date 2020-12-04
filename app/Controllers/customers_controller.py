@@ -15,7 +15,7 @@ def update_customer_by_column(customer_obj, column_value, value):
 
 
 def get_customer_by_id(customer_id):
-    return cr.get_customer_by_id(customer_id)
+    return p_cr.get_customer_by_id(customer_id)
 
 
 def get_customers_by_column_value(column_value, value):
