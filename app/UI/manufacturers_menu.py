@@ -18,8 +18,8 @@ def manufacturer_menu():
             contact_phone = input('Enter contact phone: ')
             contact_email = input('Enter contact email: ')
 
-            add_manufacturer(manufacturer_id, manufacturer_name, hq_address, hq_phone, contact_name, contact_phone
-                             , contact_email)
+            add_manufacturer(manufacturer_id, manufacturer_name, hq_address, hq_phone, contact_name, contact_phone,
+                             contact_email)
 
         elif select == "2":
             manufacturers = get_all_manufacturers()

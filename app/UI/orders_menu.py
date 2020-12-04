@@ -1,9 +1,9 @@
-from Controllers.orders_controller import create_order, get_all_orders, create_employee, create_store, \
-    add_item_to_order, list_all_stores
-from Data.Repository.order_repository import get_all_order_details
-from Data.models.order import Order
+from Controllers.employees_controller import create_employee
+from Controllers.orders_controller import create_order, get_all_orders, add_item_to_order
+from Controllers.order_details_controller import get_all_order_details
+from Controllers.stores_controller import list_all_stores, create_store
 
-from UI.menu_functions import get_user_option_by_dict_keys, print_table
+from UI.menu_functions import print_table
 
 
 def orders_menu():
@@ -32,7 +32,7 @@ def orders_menu():
 
         elif selection == "2":
             employee_name = input('Employee name: ')
-            list_stores = input('Select store (Press "l" to show all stores): ')
+            list_stores = input('Select store (Press "l" to list all stores): ')
             while list_stores != "l":
                 list_stores = input('Press "l" to show all stores: ')
             else:
@@ -61,8 +61,8 @@ def orders_menu():
             order_details = get_all_order_details(order_id)
             if order_details:
                 table_items = [
-                    {'Order id': str(order_details.order_id),
-                     'Product id': str(get_all_order_details(order_id).product_id),
+                    {'Order id': order_details.order_id,
+                     'Product id': get_all_order_details(order_id).product_id,
                      'Quantity ordered': str(get_all_order_details(order_id).quantity_ordered),
                      'Sell price each': str(get_all_order_details(order_id).sell_price_each)}
                 ]
@@ -74,13 +74,13 @@ def orders_menu():
             orders = get_all_orders()
             if orders:
                 table_items = [
-                    {'Order id': str(order.order_id),
+                    {'Order id': order.order_id,
                      'Order date': str(order.order_date),
                      'Shipped date': str(order.shipped_date),
                      'Status': str(order.status),
                      'Comment': str(order.comment),
-                     'Employee id': str(order.employee_id),
-                     'Customer id': str(order.customer_id)}
+                     'Employee id': order.employee_id,
+                     'Customer id': order.customer_id}
                     for order in orders
                 ]
                 print_table(table_items)

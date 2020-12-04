@@ -24,6 +24,6 @@ class Product(Base):
     # product_order = relationship("ProductOrder", back_populates="product")
 
     def __repr__(self):
-        return f'Product: {self.product_id}, {self.product_name}, {self.description}, {self.quantity_in_stock},' \
+        return f'{self.product_id}, {self.product_name}, {self.description}, {self.quantity_in_stock},' \
                f'{self.storage_space}, {self.buy_price}, {self.product_supplier_id}, {self.product_category_id}' \
                f'{self.product_manufacturer_id}'
