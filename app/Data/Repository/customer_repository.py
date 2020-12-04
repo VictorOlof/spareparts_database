@@ -16,7 +16,7 @@ def get_all_customers():
 
 
 def get_customer_by_id(customer_id):
-    return rf.get_model_by_id(Customer, 'customer_id', customer_id)
+    return rf.get_model_by_column_value(Customer, 'customer_id', customer_id)
 
 
 def get_customers_by_column_value(column_value, value):
