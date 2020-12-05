@@ -4,10 +4,7 @@ from Data.Repository import repo_functions as rf
 
 
 def add_customer_car(customer_id, car_model_id, reg_plate, color):
-    customer_car = CustomerCar(customer_id=customer_id, car_models_id=car_model_id,
-                               reg_plate=reg_plate, color=color)
-    session.add(customer_car)
-    session.commit()
+    rf.add_model(CustomerCar, customer_id=customer_id, car_models_id=car_model_id, reg_plate=reg_plate, color=color)
 
 
 def get_all_customer_car():

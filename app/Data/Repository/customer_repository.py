@@ -4,11 +4,8 @@ from Data.Repository import repo_functions as rf
 
 
 def add_customer(first_name, last_name, address_name, city, postal_code, country, company_name, org_number):
-    customer = Customer(first_name=first_name, last_name=last_name, address=address_name,
-                        city=city, postal_code=postal_code, country=country,
-                        company_name=company_name, org_number=org_number)
-    session.add(customer)
-    session.commit()
+    rf.add_model(Customer, first_name=first_name, last_name=last_name, address=address_name, city=city,
+                 postal_code=postal_code, country=country, company_name=company_name, org_number=org_number)
 
 
 def get_all_customers():

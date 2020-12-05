@@ -4,9 +4,7 @@ from Data.Repository import repo_functions as rf
 
 
 def add_product_car(product_id, car_model_id):
-    product_car = ProductCar(product_id, car_model_id)
-    session.add(product_car)
-    session.commit()
+    rf.add_model(ProductCar, product_id=product_id, car_model_id=car_model_id)
 
 
 def get_all_product_car():

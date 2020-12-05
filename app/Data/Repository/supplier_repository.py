@@ -1,17 +1,16 @@
 from Data.db import session
 from Data.models.product import Product
 from Data.models.supplier import Supplier
+from Data.Repository import repo_functions as rf
 
 
 def add_supplier(supplier_name, supplier_address, supplier_phone, supplier_email, contact_name):
-    supplier = Supplier(supplier_name=supplier_name, supplier_address=supplier_address, supplier_phone=supplier_phone,
-                        supplier_email=supplier_email, contact_name=contact_name)
-    session.add(supplier)
-    session.commit()
+    rf.add_model(Supplier, supplier_name=supplier_name, supplier_address=supplier_address,
+                 supplier_phone=supplier_phone, supplier_email=supplier_email, contact_name=contact_name)
 
 
 def get_all_suppliers():
-    return session.query(Supplier).all()
+    return rf.get_all_models(Supplier)
 
 
 def get_products_by_supplier(selected_supplier):

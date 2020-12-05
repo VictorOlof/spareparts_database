@@ -1,13 +1,12 @@
 from Data.db import session
 from Data.models.order import Order
 from Data.models.order_detail import OrderDetail
+from Data.Repository import repo_functions as rf
 
 
 def create_order(order_date, required_date, shipped_date, status, comment, employee_id, customer_id):
-    order = Order(order_date=order_date, required_date=required_date, shipped_date=shipped_date,
-                  status=status, comment=comment, employee_id=employee_id, customer_id=customer_id)
-    session.add(order)
-    session.commit()
+    rf.add_model(Order, order_date=order_date, required_date=required_date, shipped_date=shipped_date, status=status,
+                 comment=comment, employee_id=employee_id, customer_id=customer_id)
 
 
 def add_item_to_order(order_id, product_id, quantity_ordered, sell_price_each):
@@ -19,4 +18,4 @@ def add_item_to_order(order_id, product_id, quantity_ordered, sell_price_each):
 
 
 def get_all_orders():
-    return session.query(Order).all()
+    return rf.get_all_models(Order)
