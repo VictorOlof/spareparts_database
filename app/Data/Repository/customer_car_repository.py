@@ -1,5 +1,4 @@
 from Data.models.customers_has_carmodels import CustomerCar
-from Data.db import session
 from Data.Repository import repo_functions as rf
 
 

@@ -1,4 +1,3 @@
-from Data.db import session
 from Data.models.employee import Employee
 from Data.Repository import repo_functions as rf
 

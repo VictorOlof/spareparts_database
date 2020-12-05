@@ -1,4 +1,3 @@
-from Data.db import session
 from Data.models.store import Store
 from Data.Repository import repo_functions as rf
 
