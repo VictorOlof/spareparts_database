@@ -1,7 +1,8 @@
 from Controllers.categories_controller import get_products_by_category
-from Controllers.products_controller import add_product, get_all_products
+from Controllers.products_controller import add_product, get_all_products, get_product_by_id
 from Controllers.suppliers_controller import add_supplier, get_all_suppliers, get_products_by_supplier
 from Controllers.manufacturers_controller import add_manufacturer, get_all_manufacturers, get_products_by_manufacturer
+from Controllers.product_orders_controller import add_product_order, get_product_order_by_id
 from UI.menu_functions import print_table
 
 
@@ -16,7 +17,8 @@ def product_menu():
         print("5. View all products by category")
         print("6. View all products by supplier")
         print("7. View all products by manufacturer")
-        print("8. Quit Products Menu")
+        print("8. Create auto-order for product")
+        print("9. Quit Products Menu")
 
         select = input("> ")
         if select == "1":
@@ -113,4 +115,28 @@ def product_menu():
                 print(f'Could not find any products for the manufacturer {selected_manufacturer}.')
 
         elif select == "8":
+            input_id = input("Enter product id: ")
+            product_order = get_product_order_by_id(input_id)
+            product = get_product_by_id(input_id)
+            if product_order:
+                print("Auto-order for product already exist: ")
+                table_items = [
+                    {'Product id': str(product_order.product_order_id),
+                     'Quantity limit': str(product_order.quantity_limit),
+                     'Order amount': str(product_order.order_amount),
+                     'Incoming date': str(product_order.order_incoming_date)}
+                ]
+                print_table(table_items)
+                print("Change auto-order for product? Y/N")
+                # TODO: change columns in product orders
+            else:
+                if product:
+                    quantity_limit = input("Enter quantity limit: ")
+                    order_amount = input("Enter order amount: ")
+                    order_incoming_date = input("Enter incoming date: ")
+                    add_product_order(input_id, quantity_limit, order_amount, order_incoming_date)
+                else:
+                    print(f"Could not find any products for id {input_id}")
+
+        elif select == "9":
             break
