@@ -11,3 +11,7 @@ def add_product(product_name, description, quantity_in_stock, storage_space, buy
 
 def get_all_products():
     return rf.get_all_models(Product)
+
+
+def get_product_by_id(product_id):
+    return rf.get_model_by_id(Product, 'product_id', product_id)
