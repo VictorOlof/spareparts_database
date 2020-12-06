@@ -24,3 +24,7 @@ def get_car_by_reg_plate(reg_plate):
 
 def get_customer_by_customer_car(customer_car_obj):
     return customer_car_obj.customer
+
+
+def get_customer_car_columns():
+    return rf.get_object_columns(CustomerCar)
