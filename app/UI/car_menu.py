@@ -1,11 +1,11 @@
 from Controllers.customer_car_controller import add_customer_car, get_all_customer_car, get_car_by_reg_plate, \
-    get_customer_by_customer_car
+    get_customer_by_customer_car, get_customer_car_columns
 from Controllers.product_car_controller import add_product_car
 from Controllers.carbrands_controller import add_car_brand, get_all_car_brands, get_brand_by_model
 from Controllers.car_model_controller import add_car_model, get_all_car_models_by_brand, get_model_by_car, \
     get_all_car_models
 
-from UI.menu_functions import get_user_option_by_dict_keys, print_table, print_all_key_value_in_dict
+from UI.menu_functions import get_user_option_by_dict_keys, print_table, print_all_key_value_in_dict, get_object_info
 
 
 def car_menu():
@@ -24,11 +24,9 @@ def car_menu():
         select = input("> ")
 
         if select == "1":  # Add car to customer
-            customer_id = int(input('Enter customer id: '))
-            car_model_id = int(input('Enter car model id: '))
-            reg_plate = input("Enter registration plate: ")
-            color = input("Enter color: ")
-            add_customer_car(customer_id, car_model_id, reg_plate, color)
+            customer_car_info = get_object_info(columns=get_customer_car_columns(),
+                                                column_skip=None)
+            add_customer_car(*customer_car_info)
 
         elif select == "2":  # Add car to product
             product_id = int(input('Enter product id: '))
