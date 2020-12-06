@@ -1,11 +1,22 @@
 from Data.db import session
 
 
+def add_model(model_obj, **kwargs):
+    try:
+        obj_temp = model_obj()
+        for attr in kwargs:
+            setattr(obj_temp, attr, kwargs[attr])
+        session.add(obj_temp)
+        session.commit()
+    except:
+        session.rollback()
+
+
 def get_all_models(model_obj):
     return session.query(model_obj).all()
 
 
-def get_model_by_id(model_obj, column_value, value):
+def get_model_by_column_value(model_obj, column_value, value):
     return session.query(model_obj).filter(getattr(model_obj, column_value) == value).first()
 
 
@@ -28,3 +39,7 @@ def remove_object(model_obj):
         session.commit()
     except:
         session.rollback()
+
+
+def get_object_columns(model_obj):
+    return [column.key for column in model_obj.__table__.columns]
