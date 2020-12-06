@@ -5,7 +5,7 @@ def get_all_models(model_obj):
     return session.query(model_obj).all()
 
 
-def get_model_by_id(model_obj, column_value, value):
+def get_model_by_column_value(model_obj, column_value, value):
     return session.query(model_obj).filter(getattr(model_obj, column_value) == value).first()
 
 

@@ -15,11 +15,11 @@ def get_all_customer_car():
 
 
 def get_customer_car_by_id(customer_id):
-    return rf.get_model_by_id(CustomerCar, 'customer_id', customer_id)
+    return rf.get_model_by_column_value(CustomerCar, 'customer_id', customer_id)
 
 
 def get_car_by_reg_plate(reg_plate):
-    return rf.get_model_by_id(CustomerCar, 'reg_plate', reg_plate)
+    return rf.get_model_by_column_value(CustomerCar, 'reg_plate', reg_plate)
 
 
 def get_customer_by_customer_car(customer_car_obj):
