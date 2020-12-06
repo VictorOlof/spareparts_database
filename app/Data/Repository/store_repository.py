@@ -1,13 +1,10 @@
-from Data.db import session
 from Data.models.store import Store
+from Data.Repository import repo_functions as rf
 
 
 def create_store(store_name):
-    store = Store(store_name=store_name)
-
-    session.add(store)
-    session.commit()
+    rf.add_model(Store, store_name=store_name)
 
 
 def list_all_stores():
-    return session.query(Store).all()
+    return rf.get_all_models(Store)

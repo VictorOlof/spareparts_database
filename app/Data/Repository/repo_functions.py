@@ -1,6 +1,17 @@
 from Data.db import session
 
 
+def add_model(model_obj, **kwargs):
+    try:
+        obj_temp = model_obj()
+        for attr in kwargs:
+            setattr(obj_temp, attr, kwargs[attr])
+        session.add(obj_temp)
+        session.commit()
+    except:
+        session.rollback()
+
+
 def get_all_models(model_obj):
     return session.query(model_obj).all()
 
