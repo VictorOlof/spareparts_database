@@ -11,3 +11,7 @@ def add_product_car(product_id, car_model_id):
 
 def get_all_product_car():
     return rf.get_all_models(ProductCar)
+
+
+def get_product_car_columns():
+    return rf.get_object_columns(ProductCar)
