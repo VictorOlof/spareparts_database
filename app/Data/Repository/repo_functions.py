@@ -28,3 +28,7 @@ def remove_object(model_obj):
         session.commit()
     except:
         session.rollback()
+
+
+def get_object_columns(model_obj):
+    return [column.key for column in model_obj.__table__.columns]
