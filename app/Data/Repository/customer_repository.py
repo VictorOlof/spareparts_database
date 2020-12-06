@@ -29,3 +29,7 @@ def remove_customer(customer_obj):
 
 def get_customer_by_car(car_obj):
     return car_obj.customer
+
+
+def get_customer_columns():
+    return rf.get_object_columns(Customer)

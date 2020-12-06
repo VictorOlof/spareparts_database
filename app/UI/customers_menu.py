@@ -1,6 +1,7 @@
 from Controllers.customers_controller import add_customer, get_all_customers, \
-    get_customer_by_id, remove_customer, get_customers_by_column_value, update_customer_by_column
-from UI.menu_functions import print_table
+    get_customer_by_id, remove_customer, get_customers_by_column_value, update_customer_by_column, \
+    get_customer_columns
+from UI.menu_functions import print_table, get_object_info
 
 
 def customers_menu():
@@ -14,15 +15,9 @@ def customers_menu():
 
         select = input("> ")
         if select == "1":
-            first_name = input("Enter first name: ")
-            last_name = input("Enter last name: ")
-            address = input('Enter street address: ')
-            city = input('Enter city: ')
-            postal_code = int(input('Enter postal code: '))
-            country = input('Enter country: ')
-            company_name = input("Enter company_name: ")
-            org_number = input("Enter organisation number: ")
-            add_customer(first_name, last_name, address, city, postal_code, country, company_name, org_number)
+            customer_info = get_object_info(columns=get_customer_columns(),
+                                            column_skip='customer_id')
+            add_customer(*customer_info)
 
         elif select == "2":
             customers = get_all_customers()
@@ -59,4 +54,3 @@ def customers_menu():
 
         else:
             break
-
