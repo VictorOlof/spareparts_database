@@ -33,3 +33,13 @@ def print_all_key_value_in_dict(dictionary: dict):
     """Prints key and value of dict in format (KEY. VALUE)"""
     for key, value in dictionary.items():
         print(f'{key}. {value}')
+
+
+def get_object_info(columns, column_skip=None):
+    obj_info = []
+    for column in columns:
+        if column != column_skip:
+            column_print = column.replace("_", " ")
+            value = input(f"Enter {column_print}: ")
+            obj_info.append(value)
+    return obj_info
