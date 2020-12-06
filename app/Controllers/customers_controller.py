@@ -27,3 +27,7 @@ def remove_customer(obj):
 
 def get_customer_by_car(car_obj):
     return cr.get_customer_by_car(car_obj)
+
+
+def get_customer_columns():
+    return cr.get_customer_columns()
