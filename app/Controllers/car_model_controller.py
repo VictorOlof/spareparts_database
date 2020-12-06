@@ -16,3 +16,7 @@ def get_all_car_models_by_brand(car_brand_obj):
 
 def get_model_by_car(car_obj):
     return cmr.get_model_by_car(car_obj)
+
+
+def get_car_model_columns():
+    return cmr.get_car_model_columns()
