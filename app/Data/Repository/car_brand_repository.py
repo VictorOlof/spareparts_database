@@ -15,3 +15,7 @@ def get_all_car_brands():
 
 def get_brand_by_model(car_model_obj):
     return car_model_obj.car_brand
+
+
+def get_brand_columns():
+    return rf.get_object_columns(CarBrand)
