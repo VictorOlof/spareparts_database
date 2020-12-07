@@ -32,7 +32,7 @@ class Document(dict, ABC):
 
     def save(self):
         if not self._id:
-            del(self.__dict__['_id'])
+            del (self.__dict__['_id'])
             return self.collection.insert_one(self.__dict__)
 
         else:
@@ -41,6 +41,8 @@ class Document(dict, ABC):
     def update_field(self, column_value, value):
         return self.collection.update({'_id': self._id}, {"$set": {column_value: value}})
 
+    def remove_doc(self):
+        self.collection.delete_one({'_id': self._id})
 
     @classmethod
     def insert_many(cls, items):
@@ -50,8 +52,6 @@ class Document(dict, ABC):
     @classmethod
     def all(cls):
         return [cls(item) for item in cls.collection.find({})]
-    # item kommer att vara dictionary
-    # vi skickar in dictionaryt och skapar en klass av det
 
     @classmethod
     def find(cls, **kwargs):
