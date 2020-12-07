@@ -17,12 +17,8 @@ def get_customer_by_id(customer_id):
     return p_cr.get_customer_by_id(customer_id)
 
 
-def get_customers_by_column_value(column_value, value):
-    pass  # return p_cr.get_customers_by_column_value(column_value, value)
-
-
 def remove_customer(obj):
-    pass  # cr.remove_customer(obj)
+    p_cr.remove_customer(obj)
 
 
 def get_customer_by_car(car_obj):
