@@ -34,8 +34,13 @@ class Document(dict, ABC):
         if not self._id:
             del(self.__dict__['_id'])
             return self.collection.insert_one(self.__dict__)
+
         else:
             return self.collection.update({'_id': self._id}, self.__dict__)
+
+    def update_field(self, column_value, value):
+        return self.collection.update({'_id': self._id}, {"$set": {column_value: value}})
+
 
     @classmethod
     def insert_many(cls, items):
@@ -56,4 +61,3 @@ class Document(dict, ABC):
     @classmethod
     def delete(cls, **kwargs):
         cls.collection.delete_many(kwargs)
-
