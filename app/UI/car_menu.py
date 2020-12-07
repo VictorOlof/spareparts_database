@@ -1,9 +1,9 @@
 from Controllers.customer_car_controller import add_customer_car, get_all_customer_car, get_car_by_reg_plate, \
     get_customer_by_customer_car, get_customer_car_columns
-from Controllers.product_car_controller import add_product_car
-from Controllers.carbrands_controller import add_car_brand, get_all_car_brands, get_brand_by_model
+from Controllers.product_car_controller import add_product_car, get_product_car_columns
+from Controllers.carbrands_controller import add_car_brand, get_all_car_brands, get_brand_by_model, get_brand_columns
 from Controllers.car_model_controller import add_car_model, get_all_car_models_by_brand, get_model_by_car, \
-    get_all_car_models
+    get_all_car_models, get_car_model_columns
 
 from UI.menu_functions import get_user_option_by_dict_keys, print_table, print_all_key_value_in_dict, get_object_info
 
@@ -24,24 +24,22 @@ def car_menu():
         select = input("> ")
 
         if select == "1":  # Add car to customer
-            customer_car_info = get_object_info(columns=get_customer_car_columns(),
-                                                column_skip=None)
+            customer_car_info = get_object_info(columns=get_customer_car_columns())
             add_customer_car(*customer_car_info)
 
         elif select == "2":  # Add car to product
-            product_id = int(input('Enter product id: '))
-            car_model_id = int(input('Enter car model id: '))
-            add_product_car(product_id, car_model_id)
+            product_car_info = get_object_info(columns=get_product_car_columns())
+            add_product_car(*product_car_info)
 
         elif select == "3":  # Create new car brand
-            car_brand_name = input("Enter brand name: ")
-            add_car_brand(car_brand_name=car_brand_name)
+            car_brand_info = get_object_info(columns=get_brand_columns(),
+                                             column_skip='car_brand_id')
+            add_car_brand(*car_brand_info)
 
         elif select == "4":  # Create new car model
-            car_model_name = input("Enter model name: ")
-            car_model_year = input("Enter model year: ")
-            car_model_car_brand_id = int(input('Enter brand id: '))
-            add_car_model(car_model_name, car_model_year, car_model_car_brand_id)
+            car_model_info = get_object_info(columns=get_car_model_columns(),
+                                             column_skip='car_model_id')
+            add_car_model(*car_model_info)
 
         elif select == "5":  # Search car owner by reg. plate
             reg_plate = input("Enter reg. plate: ")

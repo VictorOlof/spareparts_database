@@ -12,3 +12,7 @@ def get_all_car_brands():
 
 def get_brand_by_model(car_model_obj):
     return cbr.get_brand_by_model(car_model_obj)
+
+
+def get_brand_columns():
+    return cbr.get_brand_columns()

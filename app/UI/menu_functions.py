@@ -35,10 +35,10 @@ def print_all_key_value_in_dict(dictionary: dict):
         print(f'{key}. {value}')
 
 
-def get_object_info(columns, column_skip=None):
+def get_object_info(columns, column_skip=()):
     obj_info = []
     for column in columns:
-        if column != column_skip:
+        if column not in column_skip:
             column_print = column.replace("_", " ")
             value = input(f"Enter {column_print}: ")
             obj_info.append(value)
