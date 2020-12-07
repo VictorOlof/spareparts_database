@@ -9,3 +9,7 @@ def add_product(product_id, product_name, description, quantity_in_stock, storag
 
 def get_all_products():
     return pr.get_all_products()
+
+
+def get_all_products_by_car_model(car_model_obj):
+    return pr.get_all_products_by_car_model(car_model_obj)
