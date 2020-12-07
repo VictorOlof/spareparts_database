@@ -19,12 +19,12 @@ def print_table(table: list):
     """Takes a list of dictionaries and print out values of dict in a table format"""
     # print table head row
     for key in table[0].keys():
-        print('{:20}'.format(key), end="")
+        print('{:20}'.format(str(key)), end="")
     print()
     # print rows
     for dic in table:
         for key in dic:
-            value = dic[key]
+            value = str(dic[key])
             print('{:20}'.format(value), end="")
         print()
 
