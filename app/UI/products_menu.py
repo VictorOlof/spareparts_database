@@ -73,8 +73,18 @@ def product_menu():
             category = input("Select a category: ")
             products = get_products_by_category(category)
             if products:
-                for product in products:
-                    print(product)
+                table_items = [
+                    {'Product name': str(product.product_name),
+                     'Description': str(product.description),
+                     'Quantity in stock': str(product.quantity_in_stock),
+                     'Storage space': str(product.storage_space),
+                     'Buy price': str(product.buy_price),
+                     'Supplier id': str(product.supplier_id),
+                     'Category id': str(product.category_id),
+                     'Manufacturer id': str(product.manufacturer_id)}
+                    for product in products
+                ]
+                print_table(table_items)
             else:
                 print(f'Could not find any products for category {category}.')
 
@@ -90,8 +100,19 @@ def product_menu():
             selected_supplier = input("Select supplier: ")
             products = get_products_by_supplier(selected_supplier)
             if products:
-                for product in products:
-                    print(product)
+                if products:
+                    table_items = [
+                        {'Product name': str(product.product_name),
+                         'Description': str(product.description),
+                         'Quantity in stock': str(product.quantity_in_stock),
+                         'Storage space': str(product.storage_space),
+                         'Buy price': str(product.buy_price),
+                         'Supplier id': str(product.supplier_id),
+                         'Category id': str(product.category_id),
+                         'Manufacturer id': str(product.manufacturer_id)}
+                        for product in products
+                    ]
+                    print_table(table_items)
             else:
                 print(f'Could not find any products for the supplier {selected_supplier}.')
 
@@ -107,8 +128,18 @@ def product_menu():
             selected_manufacturer = input("Select manufacturer: ")
             products = get_products_by_manufacturer(selected_manufacturer)
             if products:
-                for product in products:
-                    print(product)
+                table_items = [
+                    {'Product name': product.product_name,
+                     'Description': product.description,
+                     'Quantity in stock': str(product.quantity_in_stock),
+                     'Storage space': product.storage_space,
+                     'Buy price': str(product.buy_price),
+                     'Supplier id': str(product.supplier_id),
+                     'Category id': str(product.category_id),
+                     'Manufacturer id': str(product.manufacturer_id)}
+                    for product in products
+                ]
+                print_table(table_items)
             else:
                 print(f'Could not find any products for the manufacturer {selected_manufacturer}.')
 
