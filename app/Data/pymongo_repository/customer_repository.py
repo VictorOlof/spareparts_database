@@ -22,7 +22,7 @@ def get_customers_by_column_value(column_value, value):
 
 
 def update_customer_by_column(customer_obj, column_value, value):
-    pass
+    rf.update_object_by_column(customer_obj, column_value, value)
 
 
 def remove_customer(customer_obj):

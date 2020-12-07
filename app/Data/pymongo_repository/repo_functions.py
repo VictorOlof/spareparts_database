@@ -20,7 +20,7 @@ def get_models_by_column_value(model_obj, column_value, value):
 
 
 def update_object_by_column(model_obj, column_value, value):
-    pass
+    return model_obj.update_field(column_value, value)
 
 
 def remove_object(model_obj):

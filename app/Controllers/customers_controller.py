@@ -1,4 +1,3 @@
-import Data.Repository.customer_repository as cr
 import Data.pymongo_repository.customer_repository as p_cr
 
 
@@ -11,7 +10,7 @@ def get_all_customers():
 
 
 def update_customer_by_column(customer_obj, column_value, value):
-    cr.update_customer_by_column(customer_obj, column_value, value)
+    p_cr.update_customer_by_column(customer_obj, column_value, value)
 
 
 def get_customer_by_id(customer_id):
@@ -19,12 +18,12 @@ def get_customer_by_id(customer_id):
 
 
 def get_customers_by_column_value(column_value, value):
-    return cr.get_customers_by_column_value(column_value, value)
+    pass  # return p_cr.get_customers_by_column_value(column_value, value)
 
 
 def remove_customer(obj):
-    cr.remove_customer(obj)
+    pass  # cr.remove_customer(obj)
 
 
 def get_customer_by_car(car_obj):
-    return cr.get_customer_by_car(car_obj)
+    pass  # return cr.get_customer_by_car(car_obj)
