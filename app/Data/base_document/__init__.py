@@ -67,6 +67,6 @@ class Document(dict, ABC):
         cls.collection.update_one({'_id': obj_id}, {'$push': {list_name: value}})
 
     @classmethod
-    def insert_to_embedded_field(cls, obj_id, field, value: dict):
-        cls.collection.update_one({'_id': obj_id}, {'$set': {'customer': value}})
+    def insert_to_embedded_field(cls, obj_id, field_name: str, value: dict):
+        cls.collection.update_one({'_id': obj_id}, {'$set': {field_name: value}})
 
