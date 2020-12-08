@@ -4,6 +4,7 @@ from bson import ObjectId
 def add_model(model_obj, **kwargs):
     obj_temp = model_obj(kwargs)
     obj_temp.save()
+    return obj_temp
 
 
 def get_all_models(model_obj):
@@ -47,3 +48,11 @@ def remove_object(model_obj):
 
 def get_object_columns(model_obj):
     pass
+
+
+def insert_items_to_embedded_list(model_obj, obj_id: str, list_name: str, value: dict):
+    model_obj.insert_to_embedded_list(ObjectId(obj_id), list_name, value)
+
+
+def insert_items_to_embedded_field(model_obj, obj_id: str, field, value: dict):
+    model_obj.insert_to_embedded_field(ObjectId(obj_id), field, value)
