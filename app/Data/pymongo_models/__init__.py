@@ -5,7 +5,11 @@ class Store(Document):
     collection = db.stores
 
     def __repr__(self):
-        return f"Customer = {self.__dict__}"
+        return f"Store = {self.__dict__}"
+
+    @property
+    def store_id(self):
+        return str(self._id)
 
 
 class Employee(Document):
@@ -13,6 +17,10 @@ class Employee(Document):
 
     def __repr__(self):
         return f"Employee = {self.__dict__}"
+
+    @property
+    def employee_id(self):
+        return str(self._id)
 
 
 class Customer(Document):
@@ -32,6 +40,10 @@ class Product(Document):
     def __repr__(self):
         return f"Product = {self.__dict__}"
 
+    @property
+    def product_id(self):
+        return str(self._id)
+
 
 class Order(Document):
     collection = db.orders
@@ -50,3 +62,6 @@ class CustomerCar(Document):
     def __repr__(self):
         return f"CustomerCar = {self.__dict__}"
 
+    @property
+    def customer_car_id(self):
+        return str(self._id)
