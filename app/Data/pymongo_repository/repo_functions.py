@@ -66,7 +66,6 @@ def create_items_from_embedded_list(model_obj, obj_id, list_name, create_obj):
             obj_temp_2 = create_obj(item)
             obj_temp_2._id = obj_id
             result.append(obj_temp_2)
-            print(obj_temp_2)
         return result
     except:
         return None
