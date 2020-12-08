@@ -21,6 +21,10 @@ class Customer(Document):
     def __repr__(self):
         return f"Customer = {self.__dict__}"
 
+    @property
+    def customer_id(self):
+        return str(self._id)
+
 
 class Product(Document):
     collection = db.products
@@ -34,6 +38,10 @@ class Order(Document):
 
     def __repr__(self):
         return f"Order = {self.__dict__}"
+
+    @property
+    def order_id(self):
+        return str(self._id)
 
 
 class CustomerCar(Document):
