@@ -1,8 +1,8 @@
 from pymongo import MongoClient
 from abc import ABC
 
-client = MongoClient('mongodb://root:Duser23@localhost:27027')
-db = client.carparts_db  # använder client för skapa db object
+client = MongoClient('mongodb://root:soda1ice@localhost:27027')
+db = client.carparts_db
 
 
 class ResultList(list):
@@ -13,13 +13,12 @@ class ResultList(list):
         return self[-1] if len(self) > 0 else None
 
 
-# en bas klass våra klasser ska ärvas från
 class Document(dict, ABC):
-    collection = None  # variablen blir gemensam för alla object, på grund av placeringen här
+    collection = None
 
     def __init__(self, data):
         super().__init__()
-        # ett object i python lagrar data i , vi vill lägga till data här
+
         if '_id' not in data:
             self._id = None
         self.__dict__.update(data)
@@ -56,8 +55,16 @@ class Document(dict, ABC):
     @classmethod
     def find(cls, **kwargs):
         return ResultList(cls(item) for item in cls.collection.find(kwargs))
-        # return [cls(item) for item in cls.collection.find(kwargs)]
 
     @classmethod
     def delete(cls, **kwargs):
         cls.collection.delete_many(kwargs)
+
+    @classmethod
+    def insert_to_embedded_list(cls, obj_id, list_name: str, value: dict):
+        cls.collection.update_one({'_id': obj_id}, {'$push': {list_name: value}})
+
+    @classmethod
+    def insert_to_embedded_field(cls, obj_id, field_name: str, value: dict):
+        cls.collection.update_one({'_id': obj_id}, {'$set': {field_name: value}})
+

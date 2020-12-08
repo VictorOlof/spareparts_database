@@ -6,9 +6,8 @@ def create_order(order_date, required_date, shipped_date, status, comment, emplo
 
 
 def add_item_to_order(order_id, product_id, quantity_ordered, sell_price_each):
-    pass  # od.add_item_to_order(order_id, product_id, quantity_ordered, sell_price_each)
+    p_o.add_item_to_order(order_id, product_id, quantity_ordered, sell_price_each)
 
 
 def get_all_orders():
     return p_o.get_all_orders()
-    # return od.get_all_orders()

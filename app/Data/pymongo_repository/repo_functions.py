@@ -4,6 +4,7 @@ from bson import ObjectId
 def add_model(model_obj, **kwargs):
     obj_temp = model_obj(kwargs)
     obj_temp.save()
+    return obj_temp
 
 
 def get_all_models(model_obj):
@@ -47,3 +48,35 @@ def remove_object(model_obj):
 
 def get_object_columns(model_obj):
     pass
+
+
+def insert_items_to_embedded_list(model_obj, obj_id: str, list_name: str, value: dict):
+    model_obj.insert_to_embedded_list(ObjectId(obj_id), list_name, value)
+
+
+def insert_items_to_embedded_field(model_obj, obj_id: str, field_name: str, value: dict):
+    model_obj.insert_to_embedded_field(ObjectId(obj_id), field_name, value)
+
+
+def create_items_from_embedded_list(model_obj, obj_id, list_name, create_obj):
+    try:
+        obj_temp = get_model_by_id(model_obj, obj_id)
+        result = []
+        for item in getattr(obj_temp, list_name):
+            obj_temp_2 = create_obj(item)
+            obj_temp_2._id = obj_id
+            result.append(obj_temp_2)
+        return result
+    except:
+        return None
+
+
+def create_item_from_embedded_field(model_obj, obj_id, list_name, create_obj):
+    try:
+        obj_temp = get_model_by_id(model_obj, obj_id)
+        obj_data = getattr(obj_temp, list_name)
+        obj_temp_2 = create_obj(obj_data)
+        obj_temp_2._id = obj_id
+        return obj_temp_2
+    except:
+        return None
