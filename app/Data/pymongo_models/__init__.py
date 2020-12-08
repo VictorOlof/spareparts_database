@@ -73,6 +73,15 @@ class CustomerCar(Document):
     def __repr__(self):
         return f"CustomerCar = {self.__dict__}"
 
-    @property
-    def customer_car_id(self):
-        return str(self._id)
+class Category(Document):
+    collection = db.categories
+
+    def __repr__(self):
+        return f"Category = {self.__dict__}"
+
+
+class Supplier(Document):
+    collection = db.suppliers
+
+    def __repr__(self):
+        return f"Supplier = {self.__dict__}"
