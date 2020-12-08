@@ -1,5 +1,6 @@
 from Controllers.customers_controller import add_customer, get_all_customers, \
-    get_customer_by_id, remove_customer, get_customers_by_column_value, update_customer_by_column
+    get_customer_by_id, remove_customer, update_customer_by_column
+from Data.Repository.customer_repository import get_customers_by_column_value
 from UI.menu_functions import print_table
 
 
