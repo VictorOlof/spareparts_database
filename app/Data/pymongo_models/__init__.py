@@ -12,6 +12,17 @@ class Store(Document):
         return str(self._id)
 
 
+class OrderDetail(Document):
+    collection = db.stores
+
+    def __repr__(self):
+        return f"OrderDetail = {self.__dict__}"
+
+    @property
+    def order_id(self):
+        return str(self._id)
+
+
 class Employee(Document):
     collection = db.employees
 
