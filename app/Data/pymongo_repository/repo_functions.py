@@ -56,3 +56,28 @@ def insert_items_to_embedded_list(model_obj, obj_id: str, list_name: str, value:
 
 def insert_items_to_embedded_field(model_obj, obj_id: str, field_name: str, value: dict):
     model_obj.insert_to_embedded_field(ObjectId(obj_id), field_name, value)
+
+
+def create_items_from_embedded_list(model_obj, obj_id, list_name, create_obj):
+    try:
+        obj_temp = get_model_by_id(model_obj, obj_id)
+        result = []
+        for item in getattr(obj_temp, list_name):
+            obj_temp_2 = create_obj(item)
+            obj_temp_2._id = obj_id
+            result.append(obj_temp_2)
+            print(obj_temp_2)
+        return result
+    except:
+        return None
+
+
+def create_item_from_embedded_field(model_obj, obj_id, list_name, create_obj):
+    try:
+        obj_temp = get_model_by_id(model_obj, obj_id)
+        obj_data = getattr(obj_temp, list_name)
+        obj_temp_2 = create_obj(obj_data)
+        obj_temp_2._id = obj_id
+        return obj_temp_2
+    except:
+        return None
