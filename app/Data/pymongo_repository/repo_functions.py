@@ -54,5 +54,5 @@ def insert_items_to_embedded_list(model_obj, obj_id: str, list_name: str, value:
     model_obj.insert_to_embedded_list(ObjectId(obj_id), list_name, value)
 
 
-def insert_items_to_embedded_field(model_obj, obj_id: str, field, value: dict):
-    model_obj.insert_to_embedded_field(ObjectId(obj_id), field, value)
+def insert_items_to_embedded_field(model_obj, obj_id: str, field_name: str, value: dict):
+    model_obj.insert_to_embedded_field(ObjectId(obj_id), field_name, value)
