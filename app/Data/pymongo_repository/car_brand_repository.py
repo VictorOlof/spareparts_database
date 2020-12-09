@@ -7,7 +7,7 @@ def add_car_brand(car_brand_name):
 
 
 def get_all_car_brands():
-    pass  # return rf.get_all_models(CarBrand)
+    return rf.get_all_models(mm.CarBrand)
 
 
 def get_brand_by_model(car_model_obj):
