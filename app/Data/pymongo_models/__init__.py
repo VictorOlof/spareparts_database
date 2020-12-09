@@ -12,6 +12,28 @@ class Store(Document):
         return str(self._id)
 
 
+class CarBrand(Document):
+    collection = db.cars
+
+    def __repr__(self):
+        return f"CarBrand = {self.__dict__}"
+
+    @property
+    def car_brand_id(self):
+        return str(self._id)
+
+
+class CarModel(Document):
+    collection = db.cars
+
+    def __repr__(self):
+        return f"CarModel = {self.__dict__}"
+
+    @property
+    def car_model_id(self):
+        return str(self._id)
+
+
 class OrderDetail(Document):
     collection = db.stores
 
