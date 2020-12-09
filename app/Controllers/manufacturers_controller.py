@@ -1,4 +1,4 @@
-import Data.Repository.manufacturer_repository as mr
+import Data.pymongo_repository.manufacturer_repository as mr
 
 
 def add_manufacturer(manufacturer_name, hq_address, hq_phone, contact_name, contact_phone,

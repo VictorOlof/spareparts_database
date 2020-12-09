@@ -1,4 +1,4 @@
-from Controllers.employees_controller import create_employee
+from Controllers.employees_controller import create_employee, get_all_employees
 from Controllers.orders_controller import create_order, get_all_orders, add_item_to_order
 from Controllers.order_details_controller import get_all_order_details
 from Controllers.stores_controller import list_all_stores, create_store
@@ -16,7 +16,8 @@ def orders_menu():
         print("4. Add Item To Order")
         print("5. View All Items For Order")
         print("6. View All Orders")
-        print("7. Quit Orders Menu")
+        print("7. View All Employees")
+        print("8. Quit Orders Menu")
 
         selection = input("> ")
         if selection == "1":
@@ -31,7 +32,8 @@ def orders_menu():
             create_order(order_date, required_date, shipped_date, status, comment, employee_id, customer_id)
 
         elif selection == "2":
-            employee_name = input('Employee name: ')
+            employee_first_name = input('First name: ')
+            employee_last_name = input('Last name: ')
             list_stores = input('Select store (Press "l" to list all stores): ')
             while list_stores != "l":
                 list_stores = input('Press "l" to show all stores: ')
@@ -42,7 +44,7 @@ def orders_menu():
                     print(store)
 
             employee_store_id = int(input('Store id: '))
-            create_employee(employee_name, employee_store_id)
+            create_employee(employee_first_name, employee_last_name, employee_store_id)
 
         elif selection == "3":
             store_name = input('Store name: ')
@@ -88,4 +90,17 @@ def orders_menu():
                 print(f"Could not find any orders")
 
         elif selection == "7":
+            employees = get_all_employees()
+            if employees:
+                table_items = [
+                    {'First name': employee.employee_first_name,
+                     'Last name': employee.last_name,
+                     'Store id': str(employee.employee_store_id)}
+                    for employee in employees
+                ]
+                print_table(table_items)
+            else:
+                print(f"Could not find any orders")
+
+        elif selection == "8":
             break

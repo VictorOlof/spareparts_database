@@ -11,4 +11,5 @@ def get_all_categories():
 
 
 def get_products_by_category(category):
-    return rf.get_model_by_id(mm.Category, category)
+    pass
+    """return rf.get_model_by_id(mm.Category, category)"""
