@@ -115,3 +115,7 @@ class Manufacturer(Document):
 
     def __repr__(self):
         return f"Manufacturer = {self.__dict__}"
+
+
+def ProductCar():
+    return None
