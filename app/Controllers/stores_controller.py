@@ -1,4 +1,4 @@
-import Data.Repository.store_repository as st
+import Data.pymongo_repository.store_repository as st
 
 
 def create_store(store_name):

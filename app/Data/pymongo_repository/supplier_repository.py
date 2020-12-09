@@ -13,4 +13,5 @@ def get_all_suppliers():
 
 
 def get_products_by_supplier(selected_supplier):
-    return rf.get_model_by_id(mm.Supplier, selected_supplier)
+    pass
+    """return rf.get_model_by_id(mm.Supplier, selected_supplier)"""

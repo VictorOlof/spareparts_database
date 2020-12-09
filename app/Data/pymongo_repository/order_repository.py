@@ -34,3 +34,18 @@ def add_customer_to_order(order_id, customer_id):
                                                                        'city': customer.city,
                                                                        'postal_code': customer.postal_code,
                                                                        'country': customer.country})
+
+
+def add_info_to_manufacturer(manufacturer_id):
+    manufacturer = rf.get_model_by_id(mm.Manufacturer, manufacturer_id)
+    rf.insert_items_to_embedded_field(mm.Product, manufacturer_id, 'manufacturer', {'manufacturer_name':
+                                                                                        manufacturer.manufacturer_name,
+                                                                                    'hq_address':
+                                                                                        manufacturer.hq_address,
+                                                                                    'hq_phone': manufacturer.hq_phone,
+                                                                                    'contact_name':
+                                                                                        manufacturer.contact_name,
+                                                                                    'contact_phone':
+                                                                                        manufacturer.contact_phone,
+                                                                                    'contact_email':
+                                                                                        manufacturer.contact_email})

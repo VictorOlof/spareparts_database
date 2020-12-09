@@ -1,4 +1,4 @@
-import Data.Repository.supplier_repository as su
+import Data.pymongo_repository.supplier_repository as su
 
 
 def add_supplier(supplier_name, supplier_address, supplier_phone, supplier_email, contact_name):
@@ -10,6 +10,7 @@ def get_all_suppliers():
 
 
 def get_products_by_supplier(selected_supplier):
-    return su.get_products_by_supplier(selected_supplier)
+    pass
+    """return su.get_products_by_supplier(selected_supplier)"""
 
 
