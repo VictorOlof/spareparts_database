@@ -34,3 +34,5 @@ def add_customer_to_order(order_id, customer_id):
                                                                        'city': customer.city,
                                                                        'postal_code': customer.postal_code,
                                                                        'country': customer.country})
+
+

@@ -1,4 +1,4 @@
-import Data.Repository.category_repository as ca
+import Data.pymongo_repository.category_repository as ca
 
 
 def add_category(category_name, category_description):
