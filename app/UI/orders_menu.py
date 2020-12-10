@@ -39,9 +39,15 @@ def orders_menu():
                 list_stores = input('Press "l" to show all stores: ')
             else:
                 stores = list_all_stores()
-                print('{:15}{}'.format(str('Store id'), str('Store name')))
-                for store in stores:
-                    print(store)
+                if stores:
+                    table_items = [
+                        {'Store id': stores.store_id,
+                         'Store name': stores.store_name}
+                        for stores in stores
+                    ]
+                    print_table(table_items)
+                else:
+                    print(f"Could not find any stores with store id: {stores.store_id}")
 
             employee_store_id = int(input('Store id: '))
             create_employee(employee_first_name, employee_last_name, employee_store_id)
@@ -100,7 +106,7 @@ def orders_menu():
                 ]
                 print_table(table_items)
             else:
-                print(f"Could not find any orders")
+                print(f"Could not find any employees")
 
         elif selection == "8":
             break
