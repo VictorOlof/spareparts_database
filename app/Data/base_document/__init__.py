@@ -57,6 +57,10 @@ class Document(dict, ABC):
         return ResultList(cls(item) for item in cls.collection.find(kwargs))
 
     @classmethod
+    def find_document(cls, **kwargs):
+        return [cls(item) for item in cls.collection.find(kwargs)]
+
+    @classmethod
     def delete(cls, **kwargs):
         cls.collection.delete_many(kwargs)
 
