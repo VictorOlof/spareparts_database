@@ -51,15 +51,15 @@ def orders_menu():
             create_store(store_name)
 
         elif selection == "4":
-            order_id = int(input('Order id: '))
-            product_id = int(input('Product id: '))
+            order_id = input('Order id: ')
+            product_id = input('Product id: ')
             quantity_ordered = int(input('Quantity ordered: '))
             sell_price_each = float(input('Sell price each: '))
 
             add_item_to_order(order_id, product_id, quantity_ordered, sell_price_each)
 
         elif selection == "5":
-            order_id = int(input("Order id: "))
+            order_id = input("Order id: ")
             order_details = get_all_order_details(order_id)
             if order_details:
                 table_items = [
