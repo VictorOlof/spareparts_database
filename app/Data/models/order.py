@@ -13,8 +13,8 @@ class Order(Base):
     shipped_date = sa.Column(sa.Date, nullable=False)
     status = sa.Column(sa.String(50), nullable=False)
     comment = sa.Column(sa.String(50))
-    employee_id = sa.Column(sa.Integer, sa.ForeignKey('employees.employee_id'), nullable=False)
-    customer_id = sa.Column(sa.Integer, sa.ForeignKey('customers.customer_id'), nullable=False)
+    employee_id = sa.Column(sa.String(50), sa.ForeignKey('employees.employee_id'), nullable=False)
+    customer_id = sa.Column(sa.String(50), sa.ForeignKey('customers.customer_id'), nullable=False)
 
     customer = relationship("Customer", back_populates="orders")
     order_details = relationship("OrderDetail", back_populates="order")
