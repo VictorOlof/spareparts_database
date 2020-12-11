@@ -1,3 +1,4 @@
+from Controllers.car_model_and_brand_controller import add_car_model_and_brand
 from Controllers.customer_car_controller import add_customer_car, get_all_customer_car, get_car_by_reg_plate, \
     get_customer_by_customer_car
 from Controllers.product_car_controller import add_product_car
@@ -5,7 +6,7 @@ from Controllers.carbrands_controller import add_car_brand, get_all_car_brands, 
 from Controllers.car_model_controller import add_car_model, get_all_car_models_by_brand, get_model_by_car, \
     get_all_car_models
 
-from UI.menu_functions import get_user_option_by_dict_keys, print_table, print_all_key_value_in_dict
+from UI.menu_functions import get_user_option_by_dict_keys, print_table, print_all_key_value_in_dict, get_object_info
 
 
 def car_menu():
@@ -24,8 +25,8 @@ def car_menu():
         select = input("> ")
 
         if select == "1":  # Add car to customer
-            customer_id = int(input('Enter customer id: '))
-            car_model_id = int(input('Enter car model id: '))
+            customer_id = input('Enter customer id: ')
+            car_model_id = input('Enter car model id: ')
             reg_plate = input("Enter registration plate: ")
             color = input("Enter color: ")
             add_customer_car(customer_id, car_model_id, reg_plate, color)
@@ -44,6 +45,34 @@ def car_menu():
             car_model_year = input("Enter model year: ")
             car_model_car_brand_id = int(input('Enter brand id: '))
             add_car_model(car_model_name, car_model_year, car_model_car_brand_id)
+
+        elif select == "9":
+            car_brands = get_all_car_brands()
+            print(car_brands)
+            if car_brands:
+                options = {"1": "Create new car brand",
+                           "2": "Add model to existing car brand"}
+                print_all_key_value_in_dict(options)
+                select = get_user_option_by_dict_keys(options)
+
+                if select == "1":
+                    car_info = get_object_info(columns=["car_brand_name", "car_model_name", "car_model_year"])
+                    add_car_model_and_brand(*car_info)
+                else:
+                    print("Car brands:")
+                    print_all_key_value_in_dict(
+                        {key: car_brand.car_brand_name.capitalize()
+                         for key, car_brand in car_brands.items()}
+                    )
+
+                    select = get_user_option_by_dict_keys(car_brands)
+                    selected_brand = car_brands[select]
+                    car_info = get_object_info(columns=["car_model_name", "car_model_year"])
+                    add_car_model(*car_info, selected_brand.car_brand_id)
+
+            else:
+                car_info = get_object_info(columns=["car_brand_name", "car_model_name", "car_model_year"])
+                add_car_model_and_brand(*car_info)
 
         elif select == "5":  # Search car owner by reg. plate
             reg_plate = input("Enter reg. plate: ")
