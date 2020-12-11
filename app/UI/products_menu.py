@@ -100,14 +100,31 @@ def view_all_products_by_supplier():
         list_suppliers = input('Press "l" to list all suppliers: ')
     else:
         suppliers = get_all_suppliers()
-        print('{:15}{}'.format(str('Store id'), str('Store name')))
-        for supplier in suppliers:
-            print(supplier)
+        if suppliers:
+            table_items = [
+                {'Supplier id': suppliers.supplier_id,
+                 'Supplier name': suppliers.supplier_name}
+                for suppliers in suppliers
+            ]
+            print_table(table_items)
+        else:
+            print(f"Could not find any supplier with suppliers id: {suppliers.supplier_id}")
     selected_supplier = input("Select supplier: ")
     products = get_products_by_supplier(selected_supplier)
     if products:
-        for product in products:
-            print(product)
+        if products:
+            table_items = [
+                {'Product name': str(product.product_name),
+                 'Description': str(product.description),
+                 'Quantity in stock': str(product.quantity_in_stock),
+                 'Storage space': str(product.storage_space),
+                 'Buy price': str(product.buy_price),
+                 'Supplier id': str(product.supplier_id),
+                 'Category id': str(product.category_id),
+                 'Manufacturer id': str(product.manufacturer_id)}
+                for product in products
+            ]
+            print_table(table_items)
     else:
         print(f'Could not find any products for the supplier {selected_supplier}.')
 
@@ -118,14 +135,30 @@ def view_all_products_by_manufacturer():
         list_manufacturers = input('Press "l" to list all manufacturers: ')
     else:
         manufacturers = get_all_manufacturers()
-        print('{:15}{}'.format(str('Manufacturer id'), str('Manufacturer name')))
-        for manufacturer in manufacturers:
-            print(manufacturer)
+        if manufacturers:
+            table_items = [
+                {'Manufacturer id': manufacturers.manufacturer_id,
+                 'Manufacturer name': manufacturers.manufacturer_name}
+                for manufacturers in manufacturers
+            ]
+            print_table(table_items)
+        else:
+            print(f"Could not find any manufacturer with manufacturer id: {manufacturers.manufacturer_id}")
     selected_manufacturer = input("Select manufacturer: ")
     products = get_products_by_manufacturer(selected_manufacturer)
     if products:
-        for product in products:
-            print(product)
+        table_items = [
+            {'Product name': product.product_name,
+             'Description': product.description,
+             'Quantity in stock': str(product.quantity_in_stock),
+             'Storage space': product.storage_space,
+             'Buy price': str(product.buy_price),
+             'Supplier id': str(product.supplier_id),
+             'Category id': str(product.category_id),
+             'Manufacturer id': str(product.manufacturer_id)}
+            for product in products
+        ]
+        print_table(table_items)
     else:
         print(f'Could not find any products for the manufacturer {selected_manufacturer}.')
 
