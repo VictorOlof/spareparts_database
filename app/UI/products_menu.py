@@ -1,5 +1,6 @@
 from Controllers.categories_controller import get_products_by_category
 from Controllers.products_controller import add_product, get_all_products
+from Controllers.stores_controller import list_all_stores
 from Controllers.suppliers_controller import add_supplier, get_all_suppliers, get_products_by_supplier
 from Controllers.manufacturers_controller import add_manufacturer, get_all_manufacturers, get_products_by_manufacturer
 from UI.menu_functions import print_table
@@ -93,10 +94,16 @@ def product_menu():
             while list_suppliers != "l":
                 list_suppliers = input('Press "l" to list all suppliers: ')
             else:
-                suppliers = get_all_suppliers()
-                print('{:15}{}'.format(str('Store id'), str('Store name')))
-                for supplier in suppliers:
-                    print(supplier)
+                stores = list_all_stores()
+                if stores:
+                    table_items = [
+                        {'Store id': stores.store_id,
+                         'Store name': stores.store_name}
+                        for stores in stores
+                    ]
+                    print_table(table_items)
+                else:
+                    print(f"Could not find any stores with store id: {stores.store_id}")
             selected_supplier = input("Select supplier: ")
             products = get_products_by_supplier(selected_supplier)
             if products:
@@ -122,9 +129,16 @@ def product_menu():
                 list_manufacturers = input('Press "l" to list all manufacturers: ')
             else:
                 manufacturers = get_all_manufacturers()
-                print('{:15}{}'.format(str('Manufacturer id'), str('Manufacturer name')))
-                for manufacturer in manufacturers:
-                    print(manufacturer)
+                stores = list_all_stores()
+                if stores:
+                    table_items = [
+                        {'Store id': stores.store_id,
+                         'Store name': stores.store_name}
+                        for stores in stores
+                    ]
+                    print_table(table_items)
+                else:
+                    print(f"Could not find any stores with store id: {stores.store_id}")
             selected_manufacturer = input("Select manufacturer: ")
             products = get_products_by_manufacturer(selected_manufacturer)
             if products:

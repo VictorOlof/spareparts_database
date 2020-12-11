@@ -10,6 +10,7 @@ def add_product(product_name, description, quantity_in_stock, storage_space, buy
                             product_category_id=product_category_id,
                             product_manufacturer_id=product_manufacturer_id)
     add_manufacturer_to_product(obj_temp.product_id, product_manufacturer_id)
+    add_category_to_product(obj_temp.product_id, product_category_id)
 
 
 def get_all_products():
@@ -29,3 +30,11 @@ def add_manufacturer_to_product(product_id, manufacturer_id):
                                                                                    manufacturer.contact_phone,
                                                                                'contact_email':
                                                                                    manufacturer.contact_email})
+
+
+def add_category_to_product(product_id, category_id):
+    category = rf.get_model_by_id(mm.Category, category_id)
+    rf.insert_items_to_embedded_field(mm.Product, product_id, 'category', {'category_id': category_id,
+                                                                           'category_name': category.category_name,
+                                                                           'category_description':
+                                                                               category.category_description})
