@@ -1,4 +1,4 @@
-from Controllers.employees_controller import create_employee
+from Controllers.employees_controller import create_employee, get_all_employees
 from Controllers.orders_controller import create_order, get_all_orders, add_item_to_order
 from Controllers.order_details_controller import get_all_order_details
 from Controllers.stores_controller import list_all_stores, create_store
@@ -17,7 +17,8 @@ def orders_menu():
             "4": ("Add Item To Order", add_item_to_order_menu),
             "5": ("View All Items For Order", view_all_items_for_order),
             "6": ("View All Orders", view_all_orders),
-            "7": ("Leave menu", None)
+            "7": ("View All Employees", view_all_employees),
+            "8": ("Leave menu", None)
         }
 
         print_menu(options_main)
@@ -41,7 +42,8 @@ def create_new_order():
 
 
 def create_new_employee():
-    employee_name = input('Employee name: ')
+    employee_first_name = input('First name: ')
+    employee_last_name = input('Last name: ')
     list_stores = input('Select store (Press "l" to list all stores): ')
     while list_stores != "l":
         list_stores = input('Press "l" to show all stores: ')
@@ -52,7 +54,7 @@ def create_new_employee():
             print(store)
 
     employee_store_id = int(input('Store id: '))
-    create_employee(employee_name, employee_store_id)
+    create_employee(employee_first_name, employee_last_name, employee_store_id)
 
 
 def create_new_store():
@@ -101,3 +103,17 @@ def view_all_orders():
         print_table(table_items)
     else:
         print(f"Could not find any orders")
+
+
+def view_all_employees():
+    employees = get_all_employees()
+    if employees:
+        table_items = [
+            {'First name': employee.employee_first_name,
+             'Last name': employee.employee_last_name,
+             'Store id': str(employee.employee_store_id)}
+            for employee in employees
+        ]
+        print_table(table_items)
+    else:
+        print(f"Could not find any employees")
