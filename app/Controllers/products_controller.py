@@ -10,3 +10,6 @@ def add_product(product_name, description, quantity_in_stock, storage_space, buy
 def get_all_products():
     return p_p.get_all_products()
 
+
+def get_product_by_id(product_id):
+    pass  # return pr.get_product_by_id(product_id)
