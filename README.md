@@ -20,7 +20,14 @@ NoSQL diagram
 * MySQL
 
 ## Features
-...
+
+A few highlists:
+* Create car brands, products, orders, customers etc.
+* Add items to order
+* Delete customer and car models etc.
+* Search owner of car by reg. plate
+* View all car models for certain car brand
 
 ## Setup
-...
+
+Docker ... to be updated
