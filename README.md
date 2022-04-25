@@ -7,6 +7,7 @@
 
 ## General info
 Sparepart database application built with sqlalchemy and pymongo.
+You find the NoSql version in the pymongo branch.
 
 ## Screenshots
 MySQL EER diagram
